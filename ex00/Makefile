@@ -15,7 +15,7 @@ OBJ_DIR	= obj
 OBJS	= $(addprefix $(OBJ_DIR)/, $(CFILES:.cpp=.o))
 
 CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -O3
+CFLAGS	= -Wall -Wextra -Werror -pedantic-errors -std=c++98 -O3
 
 RM_OBJS			=	rm -rf $(OBJ_DIR)
 RM_EXE			=	rm -f $(NAME)
