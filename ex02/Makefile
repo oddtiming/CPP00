@@ -1,4 +1,4 @@
-NAME	=	phoneBook
+NAME	=	bigBucks
 
 SHELL	=	bash
 
@@ -9,9 +9,8 @@ RED			=	\033[0;31m
 ON_RED		=	\033[41m
 RESET_COL	=	\033[0m
 
-CFILES	=	main.cpp \
-			Contact.cpp \
-			PhoneBook.cpp
+CFILES	=	tests.cpp \
+			Account.cpp
 
 OBJ_DIR	= obj
 OBJS	= $(addprefix $(OBJ_DIR)/, $(CFILES:.cpp=.o))

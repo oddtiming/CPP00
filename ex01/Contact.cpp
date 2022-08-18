@@ -28,9 +28,7 @@ std::string	Contact::getNickname( void ) const { return this->_nickname; }
 std::string	Contact::getPhoneNumber( void ) const { return this->_phoneNumber; }
 std::string	Contact::getDarkestSecret( void ) const { return this->_darkestSecret; }
 
-void		Contact::setFirstName( std::string input ) {
-	 std::cout << "entered " << __FUNCTION__ << "()" << std::endl;
-	 this->_firstName = input; }
+void		Contact::setFirstName( std::string input ) { this->_firstName = input; }
 void		Contact::setLastName( std::string input ) { this->_lastName = input; }
 void		Contact::setNickname( std::string input ) { this->_nickname = input; }
 void		Contact::setPhoneNumber( std::string input ) { this->_phoneNumber = input; }

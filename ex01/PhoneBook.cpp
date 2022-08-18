@@ -1,80 +1,88 @@
 #include <iostream>
+#include <iomanip>
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook( void ) : _nbContacts( 0 ), _oldestContactIndex( 0 )  {
-	return ;
-}
+PhoneBook::PhoneBook( void ) : _nbContacts( 0 ), _oldestContactIndex( 0 )  { return ; }
+PhoneBook::~PhoneBook( void ) { return ; }
 
-PhoneBook::~PhoneBook( void ) {
-	return ;
-}
-
-bool	ask_yn( std::string prompt ) {
-
-	// Display the prompt
-	std::cout << prompt;
-	std::cout << " y/n : ";
-
-	// Read the answer
-	char	c;
-	std::cin >> c;
-
-	// Verify the input
-	if (c != 'y' && c != 'n') {
-		std::cout << "Please enter a y/n answer" << "\n";
-		return ask_yn( prompt );
-	}
-
-	return c == 'y' ? true : false;
-}
-
-void	PhoneBook::searchContacts( void ) const {
-
-	_printContactsList();
-
-	int	index;
-
-	std::cin >> index;
-	if (index > _nbContacts && index < 0) {
-		std::cout << "\n\t***invalid index***\n" << std::endl;
-		return searchContacts();
-	}
-
-	_printContactFields( index );
-
-	return ;
-}
+	/*******************************/
+	/*   Public member functions   */
+	/*******************************/
 
 void	PhoneBook::addContact( void ) {
 
 	// Prompt user for confirmation if list is full
-	if (this->_nbContacts == MAX_CONTACTS 
+	if (_nbContacts == MAX_CONTACTS 
 			&& ask_yn("List full. Overwrite a contact?") == false)
 		return;
 
 
-	this->_setNextContactIndex();
-
-	std::cout << "First name: ";
-	PhoneBook::_setField( &Contact::setFirstName );
-
-	std::cout << "Last name: ";
-	PhoneBook::_setField( &Contact::setLastName );
-
-	std::cout << "Nickname: ";
-	PhoneBook::_setField( &Contact::setNickname );
-
-	std::cout << "Phone number: ";
-	PhoneBook::_setField( &Contact::setPhoneNumber );
-
-	std::cout << "Aaaand darkest secret. Don't hold back: " << std::endl;
-	PhoneBook::_setField( &Contact::setDarkestSecret );
+	_setNextContactIndex();
+	PhoneBook::_setField( "First name: ", &Contact::setFirstName );
+	PhoneBook::_setField( "Last name: ", &Contact::setLastName );
+	PhoneBook::_setField( "Nickname: ", &Contact::setNickname );
+	PhoneBook::_setField( "Phone number: ", &Contact::setPhoneNumber );
+	PhoneBook::_setField( "Aaaand darkest secret. Don't hold back: ", &Contact::setDarkestSecret );
 
 	return ;
 }
 
-void	PhoneBook::_setField( void (Contact::*setterPtr)(std::string) ) {
+void	PhoneBook::searchContacts( void ) const {
 
+	// Check whether the request can be processed
+	if (_nbContacts == 0) {
+
+		std::cout << "\tSorry, there are currently no contacts" << std::endl;
+		return ;
+	}
+
+	// Display contacts
+	_printContactsList();
+
+	// Prompt user for contact index
+	std::cout << "Please enter the index of the contact you're interested in: ";
+
+	// Read input
+	std::string	indexString;
+	std::getline(std::cin >> std::ws, indexString);
+
+	// Protection for ctrl-D
+	if (indexString.empty())
+		exit_phonebook();
+
+
+	// Convert input and verify
+	int		index;
+	try {
+
+		index = stoi( indexString );
+	}
+
+	// This try catch block seemed necessary after control chars made stoi() abort
+	catch (const std::exception& e) {
+
+		std::cerr << "\nYou done fucked up that input\n" << std::endl;
+		return searchContacts();
+	}
+
+	if (index >= _nbContacts || index < 0) {
+		std::cout << "\n\t***invalid index***\n" << std::endl;
+		return searchContacts();
+	}
+
+	// Display all selected contact's fields
+	_printContactFields( (index + _oldestContactIndex) % _nbContacts );
+
+	return ;
+}
+
+	/************************/
+	/*   Helper functions   */
+	/************************/
+
+void	PhoneBook::_setField( std::string prompt, void (Contact::*setterPtr)(std::string) ) {
+
+	std::cout << prompt;
 	std::string	buffer;
 	
 	// using std::getline() here gives us two advantages:
@@ -84,61 +92,123 @@ void	PhoneBook::_setField( void (Contact::*setterPtr)(std::string) ) {
 	//		and thus allow multiple inputs in a row.
 	std::getline(std::cin >> std::ws, buffer);
 
+	// To account for ctrl-D
+	if (buffer.empty())
+		exit_phonebook();
+
 	(_Contacts[_currentIndex].*setterPtr)(buffer);
 }
 
+void	PhoneBook::_setNextContactIndex( void ) {
+
+	// If the phoneBook is not full, we can simply add sequentially
+	if (_nbContacts < MAX_CONTACTS) {
+
+		_currentIndex = _nbContacts;
+		_nbContacts++;
+		return ;
+	}
+
+	// if phoneBook is full, replace oldest entry
+	_currentIndex = _oldestContactIndex;
+
+	// Update the oldest entry to next oldest
+	_oldestContactIndex += 1;
+	_oldestContactIndex %= MAX_CONTACTS;
+
+	return ;
+}
+
+
+	/*********************************/
+	/*  Printing and Util functions  */
+	/*********************************/
+
 void	PhoneBook::_printContactFields( int index ) const {
 
-	std::cout << "First name: ";
-	std::cout << _Contacts[index].getFirstName() << "\n";
+	std::cout << "First name: \t"
+		<< _Contacts[index].getFirstName() << "\n";
 
-	std::cout << "Last name: ";
-	std::cout << _Contacts[index].getLastName() << "\n";
+	std::cout << "Last name: \t"
+		<< _Contacts[index].getLastName() << "\n";
 
-	std::cout << "Nickname: ";
-	std::cout << _Contacts[index].getNickname() << "\n";
+	std::cout << "Nickname: \t"
+		<< _Contacts[index].getNickname() << "\n";
 
-	std::cout << "Phone number: ";
-	std::cout << _Contacts[index].getPhoneNumber() << "\n";
+	std::cout << "Phone number: \t"
+		<< _Contacts[index].getPhoneNumber() << "\n";
 
-	std::cout << "Darkest secret: ";
-	std::cout << _Contacts[index].getDarkestSecret() << "\n";
+	std::cout << "Darkest secret: "
+		<< _Contacts[index].getDarkestSecret() << "\n";
 	
 	return ;
 }
 
+static void	_formatContactListField( std::string str) {
+
+	if (str.length() <= 10) {
+
+		for (int i = str.length(); i < 10; i++)
+			std::cout << " ";
+		std::cout << str;
+	}
+	else {
+
+		std::cout << str.substr(0, 9);
+		std::cout << ".";
+	}
+	return ;
+}
+
+static void _printBorder( void ) {
+
+	for (int i = 0; i < 45; i++) // 45 = 4 fields of 10 chars + 5 separators 
+		std::cout << "-";
+	std::cout << "\n";
+}
+
+/**
+ * 		Used by PhoneBook::searchContacts() to display the bare minimum
+ * 		of info for the user to pick a contact.
+ */
 void	PhoneBook::_printContactsList( void ) const {
 
-	std::cout << "|" << "First name";
-	std::cout << "|" << " Last name";
-	std::cout << "|" << "  Nickname";
-	std::cout << "|" << "Phone numb";
-	std::cout << "|" << "DarkSecret" << "|" << std::endl;
+	_printBorder();
+	std::cout << "|" << std::setw(10) << "Index";
+	std::cout << "|" << std::setw(10) << "First name";
+	std::cout << "|" << std::setw(10) << "Last name";
+	std::cout << "|" << std::setw(10) << "Nickname" << "|" << std::endl;
+	_printBorder();
 
-	return ;
-}
+	for (int i = 0; i < _nbContacts; i++) {
 
+		// To account for the fact that contacts are overwritten sequentially
+		// in rotation, but are displayed from oldest to newest.
+		int		convertedIndex = (_oldestContactIndex + i) % _nbContacts;
 
-void	PhoneBook::_setNextContactIndex( void ) {
-
-	if (this->_nbContacts < MAX_CONTACTS) {
-
-		this->_currentIndex = this->_nbContacts;
-		this->_nbContacts++;
-		return ;
+		std::cout << "|" << std::setw(10) << i;
+		std::cout << "|";
+		_formatContactListField( _Contacts[convertedIndex].getFirstName() );
+		std::cout << "|";
+		_formatContactListField( _Contacts[convertedIndex].getLastName() );
+		std::cout << "|";
+		_formatContactListField( _Contacts[convertedIndex].getNickname() );
+		std::cout << "|" << std::endl;
 	}
-
-	// Store the next available contact
-	this->_currentIndex = this->_oldestContactIndex;
-
-	// Update the oldest contact to next oldest
-	this->_oldestContactIndex += 1;
-	this->_oldestContactIndex %= MAX_CONTACTS;
+	_printBorder();
 
 	return ;
 }
 
+
+/**
+ * 		Disgrace of a function, but it's only for testing purposes
+ * 		NOTE: @correcteur : do you know how to batch initialize
+ * 			 a list of objects without using the `new' keyword?
+ */
 void	PhoneBook::generateData( void ) {
+
+	std::string	fakePhone("+1 (514) 555-0123");
 
 	_Contacts[0].setFirstName("Samantha");
 	_Contacts[0].setLastName("Doe");
@@ -187,6 +257,10 @@ void	PhoneBook::generateData( void ) {
 	_Contacts[7].setNickname("Guigui");
 	_Contacts[7].setPhoneNumber("+1 (514) 555-0123");
 	_Contacts[7].setDarkestSecret("Très chatouilleux.");
+
+	_nbContacts = 8;
+
+	std::cout << "\n\t8 friendly people successfully added to My Awesome PhoneBook®!\n" << std::endl;
 
 	return ;
 }

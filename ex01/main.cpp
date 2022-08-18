@@ -1,7 +1,33 @@
 #include <iostream>
+#include <iomanip>
 #include "PhoneBook.hpp"
 
-bool	ask_yn( std::string prompt );
+bool	ask_yn( std::string prompt ) {
+
+	// Display the prompt
+	std::cout << prompt;
+	std::cout << " y/n : ";
+
+	// Read the answer
+	char	c = 0;
+	std::cin >> c;
+
+	// Verify the input
+	// If ctrl-D is hit, it is taken as a negative answer
+	if (c && c != 'y' && c != 'n') {
+		std::cout << "Please enter a y/n answer" << std::endl;
+		return ask_yn( prompt );
+	}
+
+	return c == 'y' ? true : false;
+}
+
+void	exit_phonebook( void ) {
+
+	std::cout << "\n" << "My Awesome PhoneBook® says bye bye!" << std::endl;
+
+	exit(EXIT_SUCCESS);
+}
 
 void	_loop( PhoneBook& phoneBook )
 {
@@ -12,10 +38,14 @@ void	_loop( PhoneBook& phoneBook )
 
 	if (input.compare( "ADD" ) == 0)
 		phoneBook.addContact();
+		
 	else if (input.compare( "SEARCH" ) == 0)
 		phoneBook.searchContacts();
-	else if (input.compare( "EXIT" ) == 0)
-		return ;
+
+	// Ctrl-D is treated as end of program
+	else if (input.empty() || input.compare( "EXIT" ) == 0)
+		return exit_phonebook() ;
+		
 	else 
 		std::cout << "Invalid input" << std::endl;
 
@@ -33,7 +63,6 @@ int	main( void ) {
 
 	_loop( phoneBook );
 
-	std::cout << "My Awesome PhoneBook says bye bye!" << std::endl;
 
 	return 0;
 }

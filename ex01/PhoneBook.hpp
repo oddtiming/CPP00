@@ -4,6 +4,10 @@
 
 #define MAX_CONTACTS 8
 
+/* Misc Function prototypes from main.cpp */
+void	exit_phonebook( void );
+bool	ask_yn( std::string prompt );
+
 class PhoneBook {
 
 public:
@@ -22,11 +26,11 @@ private:
 	/* Attributes */
 	Contact	_Contacts[MAX_CONTACTS];
 	int		_nbContacts;
-	int		_currentIndex;
+	int		_currentIndex;			// Kept it as an attribute for _setNextContactIndex()
 	int		_oldestContactIndex;	// To print from oldest to newest
 
 	/* Methods */
-	void	_setField( void (Contact::*setterPtr)( std::string ) );
+	void	_setField( std::string prompt, void (Contact::*setterPtr)( std::string ) );
 	void	_printContactFields( int index ) const;
 	void	_printContactsList( void ) const;
 	void	_setNextContactIndex( void );
