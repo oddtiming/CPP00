@@ -30,7 +30,7 @@ void	Harl::_dispatchMsg( int i ) {
 		&Harl::_warning,
 		&Harl::_error };
 
-	std::cout << "\t[ " << levels[i] << " ]" << std::endl;
+	std::cout << "\n\t[ " << levels[i] << " ]" << std::endl;
 	(this->*(fctsArr[i]))();
 }
 
@@ -39,7 +39,7 @@ void	Harl::complain( std::string level ) {
 
 	for ( i = 0; i < NB_LEVELS; i++ )
 		if ( level == levels[i] )
-			_dispatchMsg( i );
+			return _dispatchMsg( i );
 
 	if ( level ==  "RANDOM" ) {
 
@@ -47,7 +47,7 @@ void	Harl::complain( std::string level ) {
 		_dispatchMsg( i );
 	}
 	else
-		std::cout << "My dude Harl don't even KNOW how to complain at that level." << std::endl;
+		std::cout << "\nOof! My dude Harl don't even KNOW how to complain at that level." << std::endl;
 }
 
 std::string Harl::levels[NB_LEVELS] = { 
