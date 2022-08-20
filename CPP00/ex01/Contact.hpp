@@ -1,7 +1,8 @@
 #pragma once
+#ifndef CPP00_EX01_CONTACT_HPP
+# define CPP00_EX01_CONTACT_HPP
 
-#include <string>
-
+# include <string>
 class Contact {
 
 public:
@@ -36,3 +37,5 @@ private:
 	std::string	_darkestSecret;
 
 };
+
+#endif	// CPP00_EX01_CONTACT_HPP

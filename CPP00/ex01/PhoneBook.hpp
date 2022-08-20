@@ -1,8 +1,12 @@
 #pragma once
 
-#include "Contact.hpp"
+#ifndef CPP00_EX01_PHONEBOOK_HPP
+# define CPP00_EX01_PHONEBOOK_HPP
 
-#define MAX_CONTACTS 8
+
+# include "Contact.hpp"
+
+# define MAX_CONTACTS 8
 
 /* Misc Function prototypes from main.cpp */
 void	exit_phonebook( void );
@@ -36,3 +40,5 @@ private:
 	void	_setNextContactIndex( void );
 
 };
+
+#endif	// CPP00_EX01_PHONEBOOK_HPP
