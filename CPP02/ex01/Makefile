@@ -1,16 +1,14 @@
-NAME	=	bigBucks
+NAME	=	fixedLessUseless
 
 SHELL	=	bash
 
 GREEN		=	\033[0;32m
-BLUE		=	\033[0;34m
 CYAN		=	\033[0;36m
 RED			=	\033[0;31m
-ON_RED		=	\033[41m
 RESET_COL	=	\033[0m
 
-CFILES	=	tests.cpp \
-			Account.cpp
+CFILES	=	Fixed.cpp \
+			main.cpp
 
 OBJ_DIR	= obj
 OBJS	= $(addprefix $(OBJ_DIR)/, $(CFILES:.cpp=.o))
@@ -32,8 +30,7 @@ $(OBJ_DIR)/%.o:	%.cpp
 	@printf "$(CYAN)%-30s-->%30s $(RESET_COL)\n$(COMPILE_C_OUT)" $^ $@
 
 all: $(NAME)
-	@if [ -e $(NAME) ]; \
-		then \
+	@if [ -e $(NAME) ]; then \
 		echo -e "$(GREEN)>>>>>>>> Compilation successful\n>>>>>>>>$(RESET_COL)"; \
 	else \
 		echo -e "$(RED)>>>>>>>> Compilation failed\n>>>>>>>>$(RESET_COL)"; \
@@ -46,11 +43,11 @@ pretty_print:
 	@echo -e "\n--------------------- $(NAME) ---------------------"
 
 clean:
-	@echo -e "$(RED)>>>>>>>> Deleting obj files$(RESET_COL) \n"
+	@echo -e "$(RED)>>>>>>>> Deleting obj files$(RESET_COL)"
 	@$(RM_OBJS)
 
 fclean:	clean
-	@echo -e "$(RED)>>>>>>>> Deleting $(NAME)$(RESET_COL)"
+	@echo -e "$(RED)>>>>>>>> Deleting ./$(NAME) $(RESET_COL)"
 	@$(RM_EXE)
 
 re:	fclean all
