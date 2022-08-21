@@ -20,8 +20,13 @@ int	main( void ) {
 	Point	b( -3, -1 );
 	Point	c( 3, -2 );
 
+	// Second triangle
+	Point	d( 1, 0 );
+	Point	e( 4, 4 );
+	Point	f( 0, 5 );
+
 	std::cout << "\n\t*** First triangle is " << a << b << c << " ***\n" << std::endl;
-	std::cout << "Point" << "\t\t" << "|" << std::setw(8) << " in triangle?\n" << std::endl;
+	std::cout << "Point\t\t| in triangle?\n" << std::endl;
 
 	_generateTest( Point( 0, 0 ) , a, b, c );
 	_generateTest( Point( -2, 3 ) , a, b, c );
@@ -33,13 +38,9 @@ int	main( void ) {
 	_generateTest( Point( -2, 0 ) , a, b, c );
 	_generateTest( Point( 2, 0 ) , a, b, c );
 
-	// Second triangle
-	Point	d( 1, 0 );
-	Point	e( 4, 4 );
-	Point	f( 0, 5 );
 
 	std::cout << "\n\n\t*** Second triangle is " << d << e << f << " ***\n" << std::endl;
-	std::cout << "Point" << "\t\t" << "|" << std::setw(8) << " in triangle?\n" << std::endl;
+	std::cout << "Point\t\t| in triangle?\n" << std::endl;
 	
 	_generateTest( Point( 1, 0 ), d, e, f );
 	_generateTest( Point( 0, 5 ), d, e, f );
