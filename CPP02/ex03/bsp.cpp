@@ -8,23 +8,22 @@
 
 bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
-	Fixed	areaX2 =  a.getX() * ( b.getY() - c.getY() ) 
-					+ b.getX() * ( c.getY() - a.getY() )
-					+ c.getX() * ( a.getY() - b.getY() ); 
+	Fixed	areaX2 	=	  a.getX() * ( b.getY() - c.getY() ) 
+						+ b.getX() * ( c.getY() - a.getY() )
+						+ c.getX() * ( a.getY() - b.getY() ); 
 	
-	Fixed	u =   a.getY() * c.getX()
-				- a.getX() * c.getY()
-				+ point.getX() * ( c.getY() - a.getY() )
-				+ point.getY() * ( a.getX() - c.getX() );
+	Fixed	u 		=     a.getY() * c.getX()
+						- a.getX() * c.getY()
+						+ point.getX() * ( c.getY() - a.getY() )
+						+ point.getY() * ( a.getX() - c.getX() );
 	
-	Fixed	v =   a.getX() * b.getY()
-				- a.getY() * b.getX()
-				+ point.getX() * ( a.getY() - b.getY() )
-				+ point.getY() * ( b.getX() - a.getX() );
+	Fixed	v 		=     a.getX() * b.getY()
+						- a.getY() * b.getX()
+						+ point.getX() * ( a.getY() - b.getY() )
+						+ point.getY() * ( b.getX() - a.getX() );
 
-	if (areaX2 > 0) {
+	if (areaX2 > 0)
 		return (u > 0) && (v > 0) && (u + v < areaX2 );
-	}
 	
 	return (u < 0) && (v < 0) && ( u + v > areaX2 );
 }

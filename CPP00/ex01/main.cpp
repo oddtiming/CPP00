@@ -54,7 +54,7 @@ void	_loop( PhoneBook& phoneBook )
 
 int	main( void ) {
 
-	PhoneBook phoneBook;
+	PhoneBook	phoneBook;
 
 	std::cout << "Welcome My Awesome PhoneBook®" << "\n";
 

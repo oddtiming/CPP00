@@ -60,12 +60,12 @@ Fixed	Fixed::operator/( Fixed const & rhs ) const {
 /*                          Relational operators                             */
 /*****************************************************************************/
 
-bool	F::operator>( Fixed const & rhs ) const { return ( this->_n > rhs.getRawBits() ); }
-bool	Fixed::operator<( Fixed const & rhs ) const { return ( this->_n < rhs.getRawBits() ); }
-bool	Fixed::operator==( Fixed const & rhs ) const { return ( this->_n == rhs.getRawBits() ); }
-bool	Fixed::operator!=( Fixed const & rhs ) const { return ( this->_n != rhs.getRawBits() ); }
-bool	Fixed::operator>=( Fixed const & rhs ) const { return ( this->_n >= rhs.getRawBits() ); }
-bool	Fixed::operator<=( Fixed const & rhs ) const { return ( this->_n <= rhs.getRawBits() ); }
+bool	Fixed::operator >  ( Fixed const & rhs ) const { return ( this->_n > rhs.getRawBits() ); }
+bool	Fixed::operator <  ( Fixed const & rhs ) const { return ( this->_n < rhs.getRawBits() ); }
+bool	Fixed::operator == ( Fixed const & rhs ) const { return ( this->_n == rhs.getRawBits() ); }
+bool	Fixed::operator != ( Fixed const & rhs ) const { return ( this->_n != rhs.getRawBits() ); }
+bool	Fixed::operator >= ( Fixed const & rhs ) const { return ( this->_n >= rhs.getRawBits() ); }
+bool	Fixed::operator <= ( Fixed const & rhs ) const { return ( this->_n <= rhs.getRawBits() ); }
 
 /*****************************************************************************/
 /*                       Incrementers / Decrementers                         */

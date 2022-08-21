@@ -38,7 +38,7 @@ std::string	fileToStr( std::string fileName ) {
 
 int	main( int argc, char **argv ) {
 
-	if (argc > 4) {
+	if (argc != 4) {
 		std::cerr << "Error." << "\n" << "Usage: " 
 			<< argv[0] << " `filename\' `strToReplace\' `strReplacement\'" << std::endl;
 		exit( EXIT_FAILURE );
