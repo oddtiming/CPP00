@@ -1,18 +1,32 @@
-#include "AMateria.hpp"
-#include "IMateriaSource.hpp"
-#include <iostream>
-#include <string>
+#ifndef MATERIA_SOURCE_HPP_
+# define MATERIA_SOURCE_HPP_
 
-class MateriaSource  : public AMateria, virtual public IMateriaSource
+# include "AMateria.hpp"
+# include "IMateriaSource.hpp"
+# include <iostream>
+# include <string>
+
+# define NB_MATERIA 4
+class MateriaSource  : virtual public IMateriaSource
 {
+	private:
+		AMateria *	_library[NB_MATERIA];
+		uint		_nbItems;
 	
 	public:
+		MateriaSource( ) { }
+		MateriaSource( MateriaSource const & src );
+		MateriaSource &	operator=( MateriaSource const & rhs );
+		~MateriaSource( );
 
-		MateriaSource( );
-		MateriaSource(std::string const & type);
-
-		void learnMateria(AMateria*);
-		AMateria* createMateria(std::string const & type);
-		MateriaSource* clone() const;
-		virtual void use( MateriaSource& target );
+		/* IMateriaSource member fct implementations */
+		void			learnMateria( AMateria* src );
+		AMateria *		createMateria( std::string const & type );
+		
+		/* Getter/setter */
+		uint			getNbItems( ) const;
+		AMateria *		getLibraryItem( uint index ) const;
+		
 };
+
+#endif // MATERIA_SOURCE_HPP_

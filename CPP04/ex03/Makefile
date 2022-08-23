@@ -8,8 +8,12 @@ RED			=	\033[0;31m
 RESET_COL	=	\033[0m
 
 CFILES	=	AMateria.cpp \
-			ICharacter.cpp \
-			IMateriaSource.cpp \
+			Character.cpp \
+			Cure.cpp \
+			Fire.cpp \
+			Ice.cpp \
+			Water.cpp \
+			MateriaSource.cpp \
 			main.cpp
 
 INC				:= ./includes

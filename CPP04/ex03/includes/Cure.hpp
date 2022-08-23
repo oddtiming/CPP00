@@ -1,19 +1,24 @@
-#include "MateriaSource.hpp"
+#ifndef CURE_HPP_
+# define CURE_HPP_
+
+#include "AMateria.hpp"
 #include <iostream>
 #include <string>
 
-class Cure : virtual public MateriaSource
+class Cure : virtual public AMateria
 {
 	private:
 		std::string	_name;
 	
 	public:
 
-		Cure( );
+		Cure( ) { }
 		Cure( Cure const & src );
 		Cure &	operator=( Cure const & rhs );
 
-		~Cure( );
+		~Cure( ) { }
 
-		void use(Cure& target);
+		void use( ICharacter & target );
 };
+
+#endif // CURE_HPP_

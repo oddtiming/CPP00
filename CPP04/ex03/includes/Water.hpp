@@ -1,19 +1,22 @@
-#include "MateriaSource.hpp"
-#include <iostream>
-#include <string>
+#ifndef WATER_HPP_
+# define WATER_HPP_
 
-class Water : virtual public MateriaSource
+# include "AMateria.hpp"
+# include <iostream>
+# include <string>
+
+class Water : virtual public AMateria
 {
-	private:
-		std::string	_name;
-	
+
 	public:
 
-		Water( );
+		Water( ) { }
 		Water( Water const & src );
 		Water &	operator=( Water const & rhs );
 
-		~Water( );
+		~Water( ) { }
 
-		void use(Water& target);
+		void use(ICharacter & target);
 };
+
+#endif // WATER_HPP_

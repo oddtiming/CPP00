@@ -1,19 +1,24 @@
-#include "MateriaSource.hpp"
-#include <iostream>
-#include <string>
+#ifndef ICE_HPP_
+# define ICE_HPP_
 
-class Ice : public MateriaSource
+# include "AMateria.hpp"
+# include <iostream>
+# include <string>
+
+class Ice : public AMateria
 {
 	private:
 		std::string	_name;
 	
 	public:
 
-		Ice( );
+		Ice( ) { }
 		Ice( Ice const & src );
 		Ice &	operator=( Ice const & rhs );
 
-		~Ice( );
+		~Ice( ) { }
 
-		void use(Ice& target);
+		void use(ICharacter & target);
 };
+
+#endif // ICE_HPP_
