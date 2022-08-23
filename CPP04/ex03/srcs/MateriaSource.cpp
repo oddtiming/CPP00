@@ -66,7 +66,7 @@ AMateria*		MateriaSource::createMateria( std::string const & type ){
 	std::cout << "createMateria() wth materia " << type << std::endl;
 	AMateria *	copy;
 
-	for (uint i = 0; i <= _nbItems; i++) {
+	for (uint i = 0; i < _nbItems; i++) {
 
 		std::cout << "i = " << i << std::endl;
 		std::cout << "_library[i]->getType() = " << _library[i]->getType() << std::endl;
@@ -85,6 +85,8 @@ void			MateriaSource::learnMateria( AMateria * src ){
 
 	if ( this->_nbItems == NB_MATERIA )
 		return ;
+
+	this->_nbItems++;
 
 	this->_library[this->_nbItems] = src->clone();
 

@@ -24,8 +24,8 @@ SRCS			= $(addprefix $(SRC_DIR)/, $(CFILES))
 OBJ_DIR			= ./obj
 OBJS			= $(addprefix $(OBJ_DIR)/, $(CFILES:.cpp=.o))
 
-CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I$(INC)
+CC		= clang++
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -fno-limit-debug-info -g -I$(INC)
 
 RM_OBJS			=	rm -rf $(OBJ_DIR)
 RM_EXE			=	rm -f $(NAME)

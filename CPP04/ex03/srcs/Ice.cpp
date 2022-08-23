@@ -1,6 +1,6 @@
-#include "Ice.hpp"
+c#include "Ice.hpp"
 
-Ice::Ice( ) {
+Ice::Ice( )  {
 	std::cout << "Ice constructor called  " << std::endl;
 }
 
@@ -20,7 +20,7 @@ Ice::~Ice( ) {
 
 
 void	Ice::use( ICharacter& target ) {
-	return this->AMateria::use( target );	
+	return this->AMateria::use( target );
 }
 
 AMateria* Ice::clone() const {

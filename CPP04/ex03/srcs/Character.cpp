@@ -68,6 +68,9 @@ void Character::equip( AMateria * newMateria) {
 	if ( _nbItems == NB_INVENTORY_SLOTS )
 		delete _inventory[_nbItems - 1];
 	
+	if ( newMateria == NULL )
+		return ;
+	
 	_inventory[_nbItems] = newMateria->clone();
 	
 	if ( _nbItems != NB_INVENTORY_SLOTS )
