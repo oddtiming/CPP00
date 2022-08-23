@@ -17,7 +17,6 @@ class Character : virtual public ICharacter
 		AMateria *		_droppedItems[32];
 		uint			_nbItems;
 		uint			_nbDroppedItems;
-		uint			_droppedItemsCapacity;
 
 	public:
 		// Constructors
@@ -38,6 +37,6 @@ class Character : virtual public ICharacter
 		void use(int idx, ICharacter& target);
 };
 
-std::ostream & operator<<( std::ostream & o, Character const & s );
+std::ostream & operator<<( std::ostream & o, ICharacter const & s );
 
 #endif // CHARACTER_HPP_

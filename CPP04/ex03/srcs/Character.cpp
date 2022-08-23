@@ -31,7 +31,7 @@ Character &	Character::operator=( Character const & rhs ) {
 
 	this->_name = rhs.getName();
 
-	for (int i = 0; i < rhs._nbItems; i++) {
+	for (uint i = 0; i < rhs._nbItems; i++) {
 		_inventory[i] = rhs._inventory[i];
 		_nbItems++;
 	}
@@ -57,7 +57,7 @@ std::string const &	 Character::getName( ) const {
 
 void Character::use( int idx, ICharacter & target) {
 
-	if (idx >= _nbItems)
+	if (idx < 0 || (uint)idx >= _nbItems)
 		return ;
 	
 	this->_inventory[idx]->use( target );
@@ -82,9 +82,16 @@ void Character::unequip( int idx ) {
 
 	delete _inventory[idx];
 	
-	for (int i = idx; i < _nbItems - 1; i++)
+	for (uint i = idx; i < _nbItems - 1; i++)
 		_inventory[i] = _inventory[i + 1];
 
 	_nbItems--;
 	
 }	
+
+
+std::ostream &	operator<<( std::ostream & o, ICharacter const & rhs ) {
+
+	o << rhs.getName();
+	return o;
+}

@@ -1,7 +1,7 @@
 #include "AMateria.hpp"
 
 /*****************************************************************************/
-/*                        Constructors/Destructors                           */
+/*                          Constructors/Destructors                         */
 /*****************************************************************************/
 
 AMateria::AMateria( AMateria const & src ) {
@@ -39,7 +39,6 @@ void	AMateria::use( ICharacter& target ) {
 /*****************************************************************************/
 /*                            Non-member functions                           */
 /*****************************************************************************/
-
 
 std::ostream &	operator<<( std::ostream & o, AMateria const & rhs ) {
 

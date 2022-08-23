@@ -14,7 +14,7 @@ class MateriaSource  : virtual public IMateriaSource
 		uint		_nbItems;
 	
 	public:
-		MateriaSource( ) { }
+		MateriaSource( );
 		MateriaSource( MateriaSource const & src );
 		MateriaSource &	operator=( MateriaSource const & rhs );
 		~MateriaSource( );

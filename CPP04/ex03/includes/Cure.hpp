@@ -5,19 +5,20 @@
 #include <iostream>
 #include <string>
 
-class Cure : virtual public AMateria
+class Cure : public AMateria
 {
 	private:
 		std::string	_name;
 	
 	public:
 
-		Cure( ) { }
+		Cure( );
 		Cure( Cure const & src );
 		Cure &	operator=( Cure const & rhs );
 
-		~Cure( ) { }
+		~Cure( );
 
+		virtual AMateria* clone() const;
 		void use( ICharacter & target );
 };
 

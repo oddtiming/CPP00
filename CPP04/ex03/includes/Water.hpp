@@ -5,18 +5,19 @@
 # include <iostream>
 # include <string>
 
-class Water : virtual public AMateria
+class Water : public AMateria
 {
 
 	public:
 
-		Water( ) { }
+		Water( );
 		Water( Water const & src );
 		Water &	operator=( Water const & rhs );
 
-		~Water( ) { }
+		~Water( );
 
-		void use(ICharacter & target);
+		virtual AMateria* clone() const;
+		void use( ICharacter & target );
 };
 
 #endif // WATER_HPP_

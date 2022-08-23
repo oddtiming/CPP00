@@ -11,12 +11,23 @@ Water::Water( Water const & src ) {
 
 Water &	Water::operator=( Water const & rhs ) {
 	this->AMateria::operator=( rhs );
+	return *this;
 }
 
 Water::~Water( ) {
 	std::cout << "Water called  " << std::endl;
 }
 
-void Water::use(ICharacter & target) {
-	this->AMateria::use( target );
-}	
+
+void	Water::use( ICharacter& target ) {
+	return this->AMateria::use( target );	
+}
+
+AMateria* Water::clone() const {
+	
+	Water *	clone = new Water();
+	
+	*clone = *this;
+
+	return clone;
+}

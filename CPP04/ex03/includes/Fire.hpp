@@ -5,19 +5,20 @@
 #include <iostream>
 #include <string>
 
-class Fire : virtual public AMateria
+class Fire : public AMateria
 {
 	private:
 		std::string	_name;
 	
 	public:
 
-		Fire( ) { }
+		Fire( );
 		Fire( Fire const & src );
 		Fire &	operator=( Fire const & rhs );
 
-		~Fire( ) { }
+		~Fire( );
 
+		virtual AMateria* clone() const;
 		void use( ICharacter & target );
 };
 

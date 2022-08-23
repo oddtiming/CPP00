@@ -15,7 +15,7 @@ MateriaSource::MateriaSource( MateriaSource const & src ) {
 }
 
 MateriaSource &	MateriaSource::operator=( MateriaSource const & rhs ) {
-	
+
 	uint i = rhs.getNbItems();
 	
 	while (i--)
@@ -64,12 +64,13 @@ AMateria*		MateriaSource::createMateria( std::string const & type ){
 
 	AMateria *	copy = NULL;
 
-	for (int i = 0; i < _nbItems; i++) {
+	for (uint i = 0; i < _nbItems - 1; i++) {
 
-		if ( _library[i]->getType() == type )
-			AMateria *	copy = _library[i]->clone();
+		if ( _library[i]->getType() == type ) {
+			copy = _library[i]->clone();
+			return copy;
+		}
 		
-		return copy;
 	}
 	
 	return NULL;

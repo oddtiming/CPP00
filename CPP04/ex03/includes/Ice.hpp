@@ -12,13 +12,14 @@ class Ice : public AMateria
 	
 	public:
 
-		Ice( ) { }
+		Ice( );
 		Ice( Ice const & src );
 		Ice &	operator=( Ice const & rhs );
 
-		~Ice( ) { }
+		~Ice( );
 
-		void use(ICharacter & target);
+		virtual AMateria* clone() const;
+		void use( ICharacter & target );
 };
 
 #endif // ICE_HPP_
