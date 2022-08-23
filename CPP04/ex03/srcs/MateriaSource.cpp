@@ -62,10 +62,15 @@ AMateria *		MateriaSource::getLibraryItem( uint index ) const {
  */
 AMateria*		MateriaSource::createMateria( std::string const & type ){
 
-	AMateria *	copy = NULL;
 
-	for (uint i = 0; i < _nbItems - 1; i++) {
+	std::cout << "createMateria() wth materia " << type << std::endl;
+	AMateria *	copy;
 
+	for (uint i = 0; i <= _nbItems; i++) {
+
+		std::cout << "i = " << i << std::endl;
+		std::cout << "_library[i]->getType() = " << _library[i]->getType() << std::endl;
+		std::cout << "i = " << i << std::endl;
 		if ( _library[i]->getType() == type ) {
 			copy = _library[i]->clone();
 			return copy;
