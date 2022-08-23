@@ -5,11 +5,11 @@
 /*****************************************************************************/
 
 ClapTrap::ClapTrap( ) : 
-	_name( "default__ClapTrap" ),
+	_name( "default_ClapTrap" ),
 	_hitPts( CLAP_HP ),
 	_energyPts( CLAP_EP ),
 	_attackDmg( CLAP_AD ) {
-	std::cout << __FUNCTION__ << " default constructor called. Name given is " 
+	std::cout << __FUNCTION__ << "( ) default constructor called. Name given is " 
 		<< this->_name << std::endl;
 	return ;
 }
@@ -20,8 +20,7 @@ ClapTrap::ClapTrap( std::string name ) :
 	_energyPts( CLAP_EP ),
 	_attackDmg( CLAP_AD ) {
 
-	std::cout << __FUNCTION__ << " parametric constructor called with name " 
-		<< name << std::endl;
+	std::cout << __FUNCTION__ << "( " << name << " ) parametric constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap( ClapTrap const & src ) {
@@ -74,7 +73,7 @@ void		ClapTrap::attack( std::string & target ) {
 		return ;
 	
 	std::cout << *this << " attacks \"" << target << "\".";
-	std::cout << " It deals " << this->_attackDmg << " damage!" << "\n" << std::endl;
+	std::cout << " It deals " << this->_attackDmg << " damage!" << std::endl;
 
 	return ;
 }

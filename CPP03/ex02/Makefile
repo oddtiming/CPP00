@@ -1,4 +1,4 @@
-NAME	=	clapTrap
+NAME	=	fragTrap
 
 SHELL	=	bash
 
@@ -8,6 +8,7 @@ RED			=	\033[0;31m
 RESET_COL	=	\033[0m
 
 CFILES	=	ClapTrap.cpp \
+			FragTrap.cpp \
 			main.cpp
 
 OBJ_DIR	= obj

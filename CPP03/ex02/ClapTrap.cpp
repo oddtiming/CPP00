@@ -5,12 +5,12 @@
 /*****************************************************************************/
 
 ClapTrap::ClapTrap( ) : 
-	_name( "default__ClapTrap" ),
+	_name( "default_ClapTrap" ),
 	_hitPts( CLAP_HP ),
 	_energyPts( CLAP_EP ),
 	_attackDmg( CLAP_AD ) {
 	std::cout << __FUNCTION__ << " default constructor called. Name given is " 
-		<< this->_name << std::endl;
+		<< _name << std::endl;
 	return ;
 }
 

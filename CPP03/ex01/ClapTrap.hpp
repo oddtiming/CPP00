@@ -10,32 +10,37 @@
 
 class ClapTrap {
 
-private:
+/**
+ * 		Here theaccess modifier changes for the base class,
+ * 		as you want your child classes to be able to access them
+ * 
+ */
+protected:
 /* Attributes */
 	std::string	_name;
 	uint		_hitPts;
 	uint		_energyPts;
 	uint		_attackDmg;
 
-/* Private member functions */
+/* Functions */
 	void		_updateHealth( int change );	// damage is negative, repair is positive
 	bool		_updateEnergy( );
 
 public:
-/* Ctors/Dtors */
+/* Functions */
 	ClapTrap( );
-	ClapTrap( ClapTrap const & src );
 	ClapTrap( std::string name );
+	ClapTrap( ClapTrap const & src );
+
 	~ClapTrap( );
+	
 	ClapTrap &	operator=( ClapTrap const & rhs );
 
-/* Getters/setters */
+	
 	std::string	getName( ) const;
 	uint		getHP( ) const;
 	uint		getEP( ) const;
 	uint		getAD( ) const;
-
-/* Member functions */
 	void		attack( std::string& target );
 	void		takeDamage( uint damage );
 	void		beRepaired( uint damage );

@@ -5,12 +5,12 @@
 /*****************************************************************************/
 
 ClapTrap::ClapTrap( ) : 
-	_name( "default__ClapTrap" ),
+	_name( "default_ClapTrap" ),
 	_hitPts( CLAP_HP ),
 	_energyPts( CLAP_EP ),
 	_attackDmg( CLAP_AD ) {
 	std::cout << __FUNCTION__ << " default constructor called. Name given is " 
-		<< this->_name << std::endl;
+		<< _name << std::endl;
 	return ;
 }
 
@@ -73,7 +73,7 @@ void		ClapTrap::attack( std::string & target ) {
 	if (!_updateEnergy( ))
 		return ;
 	
-	std::cout << *this << " attacks \"" << target << "\".";
+	std::cout << "Claptrap " << *this << " attacks \"" << target << "\".";
 	std::cout << " It deals " << this->_attackDmg << " damage!" << "\n" << std::endl;
 
 	return ;
@@ -81,7 +81,7 @@ void		ClapTrap::attack( std::string & target ) {
 
 void		ClapTrap::takeDamage( uint damage ) {
 
-	std::cout << "\n" << *this << " takes " << damage << " damage. Fuckin ouch." << std::endl;
+	std::cout << "\nClaptrap " << *this << " takes " << damage << " damage. Fuckin ouch." << std::endl;
 
 	_updateHealth( -damage );
 	
@@ -93,7 +93,7 @@ void		ClapTrap::beRepaired( uint amount ) {
 	if (!_updateEnergy( ))
 		return ;
 
-	std::cout << *this << " repairs itself by " << amount << " hitPoints!" << std::endl;
+	std::cout << "Claptrap " << *this << " repairs itself by " << amount << " hitPoints!" << std::endl;
 
 	_updateHealth( amount );
 
@@ -104,7 +104,7 @@ bool		ClapTrap::_updateEnergy( ) {
 
 	if (!this->_energyPts) {
 
-		std::cout << "No can do! " << *this << " has no more energy points" << "\n" << std::endl;
+		std::cout << "No can do! ClapTrap " << *this << " has no more energy points" << "\n" << std::endl;
 		return false;
 	}
 
@@ -133,7 +133,7 @@ void		ClapTrap::_updateHealth( int amount ) {
 	std::cout << "\t[ " 	<< this->_hitPts << " ]" << "\n" << std::endl;
 	
 	if ( !this->_hitPts && amount )
-		std::cout << "\t!!! " << *this << " do be pretty done. sad." << " !!!\n" << std::endl;
+		std::cout << "\t!!! ClapTrap " << *this << " do be pretty done. sad." << " !!!\n" << std::endl;
 
 	else if ( amount > 0 && this->_hitPts >= CLAP_HP )
 		std::cout << *this << " is as good as new!" << "\n" << std::endl;

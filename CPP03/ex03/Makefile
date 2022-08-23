@@ -1,4 +1,4 @@
-NAME	=	clapTrap
+NAME	=	diamondTrap
 
 SHELL	=	bash
 
@@ -8,6 +8,9 @@ RED			=	\033[0;31m
 RESET_COL	=	\033[0m
 
 CFILES	=	ClapTrap.cpp \
+			DiamondTrap.cpp \
+			FragTrap.cpp \
+			ScavTrap.cpp \
 			main.cpp
 
 OBJ_DIR	= obj
