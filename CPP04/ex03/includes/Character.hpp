@@ -6,15 +6,16 @@
 # include <iostream>
 # include <string>
 
-# define NB_INVENTORY_SLOTS 4
+# define INVENTORY_MAX 4
+# define DROPPED_MAX 256
 
 class Character : virtual public ICharacter
 {
 	
 	private:
 		std::string		_name;
-		AMateria *		_inventory[NB_INVENTORY_SLOTS];
-		AMateria *		_droppedItems[32];
+		AMateria *		_inventory[INVENTORY_MAX];
+		AMateria *		_droppedItems[DROPPED_MAX];
 		uint			_nbItems;
 		uint			_nbDroppedItems;
 

@@ -1,6 +1,6 @@
 #include "Fire.hpp"
 
-Fire::Fire( ) {
+Fire::Fire( ) : AMateria( "fire" ) {
 	std::cout << "Fire constructor called  " << std::endl;
 }
 
@@ -15,12 +15,13 @@ Fire &	Fire::operator=( Fire const & rhs ) {
 }
 
 Fire::~Fire( ) {
-	std::cout << "Fire called  " << std::endl;
+	std::cout << "~Fire destructor called" << std::endl;
 }
 
-
 void	Fire::use( ICharacter& target ) {
-	return this->AMateria::use( target );	
+	std::cout << "\n* " 
+		<< "burns " << target << " with the force of a thousand suns!"
+		<< " *" << std::endl;
 }
 
 AMateria* Fire::clone() const {

@@ -6,10 +6,7 @@
 #include <string>
 
 class Fire : public AMateria
-{
-	private:
-		std::string	_name;
-	
+{	
 	public:
 
 		Fire( );

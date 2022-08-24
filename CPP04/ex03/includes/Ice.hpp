@@ -7,9 +7,7 @@
 
 class Ice : public AMateria
 {
-	private:
-		std::string	_name;
-	
+
 	public:
 
 		Ice( );

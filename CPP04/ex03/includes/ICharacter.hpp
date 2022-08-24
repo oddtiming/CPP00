@@ -6,6 +6,7 @@
 # include <string>
 
 class AMateria;
+class Character;
 
 class ICharacter {
 

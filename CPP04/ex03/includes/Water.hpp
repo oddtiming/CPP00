@@ -17,7 +17,7 @@ class Water : public AMateria
 		~Water( );
 
 		virtual AMateria* clone() const;
-		void use( ICharacter & target );
+		// void use( ICharacter & target );
 };
 
 #endif // WATER_HPP_

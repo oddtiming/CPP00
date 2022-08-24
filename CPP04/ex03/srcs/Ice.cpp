@@ -1,6 +1,6 @@
-c#include "Ice.hpp"
+#include "Ice.hpp"
 
-Ice::Ice( )  {
+Ice::Ice( ) : AMateria( "ice" ) {
 	std::cout << "Ice constructor called  " << std::endl;
 }
 
@@ -15,12 +15,14 @@ Ice &	Ice::operator=( Ice const & rhs ) {
 }
 
 Ice::~Ice( ) {
-	std::cout << "Ice called  " << std::endl;
+	std::cout << "~Ice destructor called  " << std::endl;
 }
 
 
 void	Ice::use( ICharacter& target ) {
-	return this->AMateria::use( target );
+	std::cout << "\n* " 
+		<< "shoots an ice bolt at " << target
+		<< " *" << std::endl;
 }
 
 AMateria* Ice::clone() const {

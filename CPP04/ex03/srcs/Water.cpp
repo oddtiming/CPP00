@@ -1,6 +1,6 @@
 #include "Water.hpp"
 
-Water::Water( ) {
+Water::Water( ) : AMateria( "water" ) {
 	std::cout << "Water constructor called  " << std::endl;
 }
 
@@ -15,13 +15,13 @@ Water &	Water::operator=( Water const & rhs ) {
 }
 
 Water::~Water( ) {
-	std::cout << "Water called  " << std::endl;
+	std::cout << "~Water destructor called " << std::endl;
 }
 
 
-void	Water::use( ICharacter& target ) {
-	return this->AMateria::use( target );	
-}
+// void	Water::use( ICharacter& target ) {
+// 	return this->AMateria::use( target );	
+// }
 
 AMateria* Water::clone() const {
 	

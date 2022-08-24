@@ -8,9 +8,11 @@ AMateria::AMateria( AMateria const & src ) {
 	*this = src;
 }
 
+AMateria::AMateria( std::string const & type ) :
+	_type( type ) { }
+
 AMateria &	AMateria::operator=( AMateria const & rhs ) {
 	this->_type = rhs.getType();
-	this->_message = rhs.getMessage();
 	return *this;
 }
 
@@ -22,18 +24,15 @@ std::string	const &	AMateria::getType( ) const {
 	return this->_type;
 }
 
-std::string	const &	AMateria::getMessage( ) const {
-	return this->_message;
-}
-
 /*****************************************************************************/
 /*                              Member functions                             */
 /*****************************************************************************/
 
 void	AMateria::use( ICharacter& target ) {
-	std::cout << "\n";
-	std::cout << this->_type << "  " << _message << " " << target << "\n" ;
-	std::cout << std::endl;
+	std::cout << "\n* "
+		<< this->_type << " called AMateria::use() on " << target
+		<< ". " << this->_type << " has no default action!"
+		<< " *" << std::endl;
 }
 
 /*****************************************************************************/

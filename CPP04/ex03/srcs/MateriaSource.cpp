@@ -62,32 +62,41 @@ AMateria *		MateriaSource::getLibraryItem( uint index ) const {
  */
 AMateria*		MateriaSource::createMateria( std::string const & type ){
 
-
-	std::cout << "createMateria() wth materia " << type << std::endl;
-	AMateria *	copy;
+	if ( type.empty() )
+		return NULL;
 
 	for (uint i = 0; i < _nbItems; i++) {
 
-		std::cout << "i = " << i << std::endl;
-		std::cout << "_library[i]->getType() = " << _library[i]->getType() << std::endl;
-		std::cout << "i = " << i << std::endl;
 		if ( _library[i]->getType() == type ) {
-			copy = _library[i]->clone();
-			return copy;
+	
+			return _library[i]->clone();
 		}
-		
 	}
 	
+	std::cout << "MateriaSource doesn't know " << type << std::endl;
+
 	return NULL;
 }
 
+/**
+ * 		Will only accept 4 Materia. will delete `src' if full
+ */
 void			MateriaSource::learnMateria( AMateria * src ){
 
-	if ( this->_nbItems == NB_MATERIA )
+	// Check whether there is space
+	if ( this->_nbItems >= NB_MATERIA ) {
+
+		std::cerr << __FUNCTION__ << " error: inventory is full." << std::endl;
+
+		delete src;
+
 		return ;
+	}
 
+	// Assign new item to library
+	this->_library[this->_nbItems] = src;
+
+	// Update nbItems
 	this->_nbItems++;
-
-	this->_library[this->_nbItems] = src->clone();
 
 }
