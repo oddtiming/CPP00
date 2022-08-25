@@ -80,7 +80,7 @@ void		ScavTrap::attack( std::string & target ) {
 
 	std::cout << *this << " attacks \"" << target << "\".";
 
-	// Guard mode gives a one in two chance of positive outcomes
+	// Guard mode gives a 2 in 3 chance of positive outcomes
 	if ( this->_guardMode && _updateLuckFactor() ) {
 
 		std::cout << "\n\t" << GUARD_EMOJI  << " Guard mode gives " 

@@ -35,11 +35,11 @@ int	main( ) {
 
 	
 	whoAmI( diamondTrap );
-	std::this_thread::sleep_for (std::chrono::seconds( 2 ));
+	std::this_thread::sleep_for (std::chrono::seconds( 1 ));
 
 	std::string	target( "Johnny ARRRRGGGHHHHH" );
 	std::cout << "\n" << "Target is: \"" << target << "\"\n" << std::endl;
-	std::this_thread::sleep_for (std::chrono::seconds( 2 ));
+	std::this_thread::sleep_for (std::chrono::seconds( 1 ));
 
 	void ( *doActions[5])( DiamondTrap& ) = {
 		&attack,

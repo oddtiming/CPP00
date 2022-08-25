@@ -20,11 +20,11 @@ int	main( ) {
 
 		clapTrap1.attack( target );
 
-		std::this_thread::sleep_for( std::chrono::seconds( 2 ) );
+		std::this_thread::sleep_for( std::chrono::seconds( 1 ) );
 		
 		clapTrap1.takeDamage( rand() % CLAP_HP / 2 );
 
-		std::this_thread::sleep_for( std::chrono::seconds( 2 ) );
+		std::this_thread::sleep_for( std::chrono::seconds( 1 ) );
 	}
 
 	if ( clapTrap1.getHP() )
@@ -37,18 +37,18 @@ int	main( ) {
 
 		clapTrap1.attack( target );
 
-		std::this_thread::sleep_for( std::chrono::seconds( 2 ) );
+		std::this_thread::sleep_for( std::chrono::seconds( 1 ) );
 		
 		clapTrap1.takeDamage( rand() % CLAP_HP / 2 );
 
-		std::this_thread::sleep_for( std::chrono::seconds( 2 ) );
+		std::this_thread::sleep_for( std::chrono::seconds( 1 ) );
 	}
 
 	for (int i = 0; i < 3; i++) {
 
 		clapTrap1.beRepaired( 0 );
 
-		std::this_thread::sleep_for( std::chrono::seconds( 2 ) );
+		std::this_thread::sleep_for( std::chrono::seconds( 1 ) );
 	}
 	
 	return 0;
