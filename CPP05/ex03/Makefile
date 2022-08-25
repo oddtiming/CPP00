@@ -1,4 +1,4 @@
-NAME	=	bureaucrats
+NAME	=	interns
 
 SHELL	=	bash
 
@@ -8,9 +8,14 @@ RED			=	\033[0;31m
 UYELLOW		=	\033[4;33m
 RESET_COL	=	\033[0m
 
-
 CFILES	=	Bureaucrat.cpp \
-			main.cpp
+			AForm.cpp \
+			Intern.cpp \
+			ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp \
+			main.cpp \
+			utils.cpp
 
 INC				:= ./includes
 
@@ -20,11 +25,13 @@ SRCS			= $(addprefix $(SRC_DIR)/, $(CFILES))
 OBJ_DIR			= ./obj
 OBJS			= $(addprefix $(OBJ_DIR)/, $(CFILES:.cpp=.o))
 
-CC		= clang++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -fno-limit-debug-info -g -I$(INC)
+CC				= clang++
+CFLAGS			= -Wall -Wextra -Werror -std=c++98 -fno-limit-debug-info -g -I$(INC)
 
 RM_OBJS			=	rm -rf $(OBJ_DIR)
 RM_EXE			=	rm -f $(NAME)
+GENERATED_FILES =	./*_shrubbery
+RM_FILES		=	rm -f $(GENERATED_FILES)
 
 COMPILE_EXE		=	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 COMPILE_EXE_OUT	=	$$($(COMPILE_EXE) 2>&1 | sed -e 's/error/\\\033[0;31merror\\\033[0m/g' -e 's/warning/\\\033[0;33mwarning\\\033[0m/g')
@@ -34,7 +41,7 @@ COMPILE_C_OUT	=	$$($(COMPILE_C) 2>&1 | sed -e 's/error/\\\033[0;31merror\\\033[0
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.cpp
 	@mkdir -p $(OBJ_DIR)
-	@printf "$(CYAN)%-30s-->%30s $(RESET_COL)\n$(COMPILE_C_OUT)" $^ $@
+	@printf "$(CYAN)%-33s-->%33s $(RESET_COL)\n$(COMPILE_C_OUT)" $^ $@
 
 all: $(NAME)
 	@if [ -e $(NAME) ]; then \
@@ -44,16 +51,20 @@ all: $(NAME)
 	fi
 
 $(NAME):	pretty_print $(OBJS)
-	@echo -e "\n$(CYAN)>>>>>>>> Compiling $(NAME) ...$(RESET_COL)$(COMPILE_EXE_OUT)"
+	@echo -e "\n$(CYAN)>>>>>>>> Compiling into executable $(UYELLOW)./$(NAME)$(RESET_COL)$(COMPILE_EXE_OUT)"
 
 pretty_print: 
-	@echo -e "\n--------------------- $(NAME) ---------------------"
+	@echo -e "\n----------------------- $(NAME) -----------------------"
 
 clean:
 	@echo -e "$(RED)>>>>>>>> Deleting obj files$(RESET_COL)"
 	@$(RM_OBJS)
 
-fclean:	clean
+clean_files:
+	@echo -e "$(RED)>>>>>>>> Deleting shrubbery files$(RESET_COL)"
+	@$(RM_FILES)
+
+fclean:	clean clean_files
 	@echo -e "$(RED)>>>>>>>> Deleting ./$(NAME) $(RESET_COL)"
 	@$(RM_EXE)
 

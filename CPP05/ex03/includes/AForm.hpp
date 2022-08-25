@@ -39,7 +39,7 @@ class AForm
 		AForm &	operator=( AForm const & rhs );
 
 		// Destructor
-		~AForm( );
+		virtual ~AForm( );
 
 		// Getters/Setters
 		std::string const & getName( ) const;
@@ -115,7 +115,7 @@ class AForm
 
 		};
 
-
+	
 };
 
 std::ostream & operator<<( std::ostream & o, AForm const & s );

@@ -1,55 +1,55 @@
-#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 /*****************************************************************************/
 /*                        Constructors/Destructors                           */
 /*****************************************************************************/
 
-RobotomyRequestForm::RobotomyRequestForm( ) :
-		AForm( "RobotomyRequestForm",
-				ROBOTOMY_GRADE_SIGN,
-				ROBOTOMY_GRADE_EXEC ),
+PresidentialPardonForm::PresidentialPardonForm( ) :
+		AForm( "PresidentialPardonForm",
+				PRESIDENTIAL_GRADE_SIGN,
+				PRESIDENTIAL_GRADE_EXEC ),
 		_target( "default_target" )
 {
-	std::cout << "RobotomyRequestForm default constructor called on "
+	std::cout << "PresidentialPardonForm default constructor called on "
 		<< _target << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm( std::string const & target ) :
-		AForm( "RobotomyRequestForm",
-				ROBOTOMY_GRADE_SIGN,
-				ROBOTOMY_GRADE_EXEC ),
+PresidentialPardonForm::PresidentialPardonForm( std::string const & target ) :
+		AForm( "PresidentialPardonForm",
+				PRESIDENTIAL_GRADE_SIGN,
+				PRESIDENTIAL_GRADE_EXEC ),
 		_target( target )
 {
 
 	if ( target.empty() )
-		throw InvalidTargetException( "RobotomyRequestForm" );
+		throw InvalidTargetException( "PresidentialPardonForm" );
 
-	std::cout << "RobotomyRequestForm parametric constructor called on "
+	std::cout << "PresidentialPardonForm parametric constructor called on "
 		<< _target << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const & src ) :
-	AForm( "RobotomyRequestForm",
-			ROBOTOMY_GRADE_SIGN,
-			ROBOTOMY_GRADE_EXEC ),
+PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const & src ) :
+	AForm( "PresidentialPardonForm",
+			PRESIDENTIAL_GRADE_SIGN,
+			PRESIDENTIAL_GRADE_EXEC ),
 	_target( src._target )
 {
-	std::cout << "RobotomyRequestForm copy constructor called on " << _target << std::endl;
+	std::cout << "PresidentialPardonForm copy constructor called on " << _target << std::endl;
 	*this = src;
 }
 
-RobotomyRequestForm::~RobotomyRequestForm( )
+PresidentialPardonForm::~PresidentialPardonForm( )
 {
-	std::cout << "~RobotomyRequestForm destructor called by " << _target << std::endl;
+	std::cout << "~PresidentialPardonForm destructor called by " << _target << std::endl;
 }
 
 /*****************************************************************************/
 /*                           Assignment operator                             */
 /*****************************************************************************/
 
-RobotomyRequestForm &	RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs ) {
+PresidentialPardonForm &	PresidentialPardonForm::operator=( PresidentialPardonForm const & rhs ) {
 
-	std::cerr << "RobotomyRequestForm assignment operator called by "
+	std::cerr << "PresidentialPardonForm assignment operator called by " 
 		<< this->getName()	<< "on" << rhs.getName() 
 		<< ". Const attributes cannot be assigned " << std::endl;
 
@@ -60,43 +60,27 @@ RobotomyRequestForm &	RobotomyRequestForm::operator=( RobotomyRequestForm const 
 /*                              Getters/Setters                              */
 /*****************************************************************************/
 
-std::string const &	 RobotomyRequestForm::getTarget( ) const { return this->_target; }
+std::string const &	 PresidentialPardonForm::getTarget( ) const { return this->_target; }
 
 
 /*****************************************************************************/
 /*                              Member functions                             */
 /*****************************************************************************/
 
-void RobotomyRequestForm::_executeFormAction(  ) const {
+void PresidentialPardonForm::_executeFormAction(  ) const {
 	
-	static bool isLucky = true;
-
-	
-	std::cout << "\n"
-		<< "* bbbZzZZzZZZZzzvv... *" << "\n"
-		<< "* vvvZzZZzZIIIOoOo vvvvZZZzzvv... *" << "\n"
-		<< "* brbrbrbrbrrrrrbrrbrrrRRRRRRrrRRRRvvvvvvRrR *" << "\n"
-		<< "* clink *" << "\n" << std::endl;
-
-	if ( isLucky ) {
-		std::cout << this->_target << " was successfully robotomized!" << "\n"
-			<< std::endl;
-
-	}
-	else  {
-		std::cout << this->_target << "'s Robotomy was... not a success." << "\n"
-			<< std::endl;
-	}
-
-	isLucky = !isLucky;
+	// In case of success 
+	std::cout << this->_target << " has been pardoned by Zaphod Beeblerox" << "\n"
+		<< std::endl;
 
 }
+
 
 /*****************************************************************************/
 /*                            Non-member functions                           */
 /*****************************************************************************/
 
-std::ostream &	operator<<( std::ostream & o, RobotomyRequestForm const & rhs ) {
+std::ostream &	operator<<( std::ostream & o, PresidentialPardonForm const & rhs ) {
 
 	o << rhs.getName() << " form :" 
 		<< "\n\t-w- Sign Grade is \t: " << rhs.getSignGrade() << "\t -w-"

@@ -18,9 +18,10 @@ int main( ) {
 	// The compact
 	try {
 		// Grade too high
-		Bureaucrat wrongBob( "wrongBob", 0); } catch (std::exception & e) { std::cerr << "\n" << e.what() << std::endl;	}
+		Bureaucrat wrongBob( "wrongBob", 0); 
+	} catch (std::exception & e) { std::cerr << "\n" << e.what() << std::endl;	}
 
-	// The new age
+	// The efficient
 	try {
 		// Grade too low
 		Form wrongForm( "wrongForm", 1, 152 );

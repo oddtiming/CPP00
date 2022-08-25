@@ -5,6 +5,7 @@ SHELL	=	bash
 GREEN		=	\033[0;32m
 CYAN		=	\033[0;36m
 RED			=	\033[0;31m
+UYELLOW		=	\033[4;33m
 RESET_COL	=	\033[0m
 
 CFILES	=	Bureaucrat.cpp \
