@@ -9,16 +9,21 @@ Cat::Cat( ) : AAnimal( "Cat" ), _brain( new Brain() ) {
 	return ;
 }
 
-Cat::Cat( Cat const & src ) : _brain( new Brain() ) {
+Cat::Cat( Cat const & src ) {
 	std::cout << "Cat copy constructor called" << std::endl;
 
-	*this = src;
+	this->_type = src.getType();
+	_brain = new Brain( *(src._brain) );
+
 }
 
 Cat &	Cat::operator=( Cat const & rhs ) {
 	std::cout << "Cat assignment operator called" << std::endl;
 
 	this->_type = rhs.getType();
+
+	delete _brain;
+	_brain = new Brain( *(rhs._brain) );
 	return *this;
 }
 
@@ -33,10 +38,6 @@ Cat::~Cat( ) {
 
 void	Cat::makeSound( ) const {
 	std::cout << this->_type << ": \"meowww\"" << std::endl;
-}
-
-std::string	Cat::getType( ) const {
-	return this->_type;
 }
 
 void		Cat::spewIdea( ) const {

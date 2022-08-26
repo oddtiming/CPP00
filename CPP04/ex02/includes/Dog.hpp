@@ -20,11 +20,8 @@ public:
 
 	virtual void		makeSound( ) const;
 
-	std::string	getType( ) const;
-	void		spewIdea( ) const;
+	virtual void		spewIdea( ) const;
 
 };
-
-std::ostream & operator<<( std::ostream & o, Dog const & s );
 
 #endif // DOG_HPP_

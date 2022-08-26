@@ -31,21 +31,7 @@ Dog::~Dog( ) {
 /*****************************************************************************/
 
 void	Dog::makeSound( ) const {
-	std::cout << this->_type << ": \"Woof! Woof!\"" << std::endl;
-}
 
-std::string		Dog::getType( ) const {
-	return this->_type;
-}
-
-
-/*****************************************************************************/
-/*                            Non-member functions                           */
-/*****************************************************************************/
-
-
-std::ostream &	operator<<( std::ostream & o, Dog const & rhs ) {
-
-	o << rhs.getType();
-	return o;
+	// *this uses << overload from Animal parent class
+	std::cout << *this << ": \"Woof! Woof!\"" << std::endl;
 }

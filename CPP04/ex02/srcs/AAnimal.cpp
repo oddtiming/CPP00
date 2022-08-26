@@ -31,7 +31,7 @@ AAnimal::~AAnimal( ) {
 /*                             Getters/Setters                               */
 /*****************************************************************************/
 
-std::string		AAnimal::getType( ) const {
+std::string const &		AAnimal::getType( ) const {
 	return this->_type;
 }
 

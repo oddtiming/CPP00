@@ -15,11 +15,6 @@ public:
 	Dog &	operator=( Dog const & rhs );
 
 	virtual void		makeSound( ) const;
-
-	std::string	getType( ) const;
-
 };
-
-std::ostream & operator<<( std::ostream & o, Dog const & s );
 
 #endif // DOG_HPP_

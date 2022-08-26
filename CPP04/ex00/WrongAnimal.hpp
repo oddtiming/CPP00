@@ -20,8 +20,8 @@ public:
 
 	virtual ~WrongAnimal( );
 
-	virtual void	makeSound( ) const;
-	std::string		getType( ) const;
+	virtual void		makeSound( ) const;
+	std::string	const &	getType( ) const;
 
 };
 

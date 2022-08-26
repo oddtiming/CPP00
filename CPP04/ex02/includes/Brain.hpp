@@ -8,7 +8,7 @@ class Brain {
 
 private:
 /* Attributes */
-	static std::string	_ideas[100];
+	static std::string const	_ideas[100];
 
 public:
 /* Functions */

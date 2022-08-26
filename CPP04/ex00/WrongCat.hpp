@@ -16,10 +16,6 @@ public:
 
 	virtual void		makeSound( ) const;
 
-	std::string	getType( ) const;
-
 };
-
-std::ostream & operator<<( std::ostream & o, WrongCat const & s );
 
 #endif // WRONG_CAT_HPP_

@@ -22,9 +22,12 @@ public:
 	// to delete them before deleting themselves
 	virtual ~Animal( );
 
-	virtual void	makeSound( ) const;
-	virtual void	spewIdea( ) const = 0;
-	std::string		getType( ) const;
+	virtual void			makeSound( ) const;
+	std::string const &		getType( ) const;
+
+	// virtual function can be bound at runtime
+	// to allow polymorphism
+	virtual void	spewIdea( ) const;
 
 };
 

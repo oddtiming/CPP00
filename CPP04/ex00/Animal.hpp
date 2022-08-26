@@ -22,8 +22,8 @@ public:
 	// to delete them before deleting themselves
 	virtual ~Animal( );
 
-	virtual void	makeSound( ) const;
-	std::string		getType( ) const;
+	virtual void			makeSound( ) const;
+	std::string const &		getType( ) const;
 
 };
 

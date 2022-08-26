@@ -18,13 +18,12 @@ public:
 	Cat( Cat const & src );
 	Cat &	operator=( Cat const & rhs );
 
-	virtual void		makeSound( ) const;
+	virtual void	makeSound( ) const;
 
-	std::string	getType( ) const;
-	void		spewIdea( ) const;
+	// Child implementation of base class's virtual function
+	virtual void	spewIdea( ) const;
 
 };
 
-std::ostream & operator<<( std::ostream & o, Cat const & s );
-
 #endif // CAT_HPP_
+ 

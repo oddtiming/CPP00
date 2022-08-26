@@ -33,18 +33,3 @@ WrongCat::~WrongCat( ) {
 void	WrongCat::makeSound( ) const {
 	return this->WrongAnimal::makeSound();
 }
-
-std::string	WrongCat::getType( ) const {
-	return this->_type;
-}
-
-
-/*****************************************************************************/
-/*                            Non-member functions                           */
-/*****************************************************************************/
-
-std::ostream &	operator<<( std::ostream & o, WrongCat const & rhs ) {
-
-	o << rhs.getType();
-	return o;
-}

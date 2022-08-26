@@ -22,10 +22,12 @@ public:
 	// to delete them before deleting themselves
 	virtual ~AAnimal( );
 
+
+	std::string	const &	getType( ) const;
+	
 	// Here it is crucial to NULL-initialize them !!!
-	virtual void	makeSound( ) const = 0;
-	virtual void	spewIdea( ) const = 0;
-	std::string		getType( ) const;
+	virtual void		makeSound( ) const = 0;
+	virtual void		spewIdea( ) const = 0;
 
 };
 

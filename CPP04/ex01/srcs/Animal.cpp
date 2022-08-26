@@ -4,7 +4,7 @@
 /*                        Constructors/Destructors                           */
 /*****************************************************************************/
 
-Animal::Animal( ) : _type( "Animal" ) {
+Animal::Animal( ) : _type( "default_Animal" ) {
 	std::cout << "Animal constructor called" << std::endl;
 }
 
@@ -35,7 +35,11 @@ void	Animal::makeSound( ) const {
 	std::cout << this->_type << ": \"I'm an animal, yo\"" << std::endl;
 }
 
-std::string		Animal::getType( ) const {
+void	Animal::spewIdea( ) const {
+	std::cout << this->_type << "doesn't have a brain! cannot spew Ideas" << std::endl;
+}
+
+std::string	const &	Animal::getType( ) const {
 	return this->_type;
 }
 
@@ -43,7 +47,6 @@ std::string		Animal::getType( ) const {
 /*****************************************************************************/
 /*                            Non-member functions                           */
 /*****************************************************************************/
-
 
 std::ostream &	operator<<( std::ostream & o, Animal const & rhs ) {
 

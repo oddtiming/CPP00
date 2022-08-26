@@ -17,6 +17,8 @@ int	main( ) {
 	delete cat;
 	delete dog;
 
+	
+
 	// Uncommenting the following lines will generate compiler error
 
 	// const AAnimal* meta = new AAnimal();

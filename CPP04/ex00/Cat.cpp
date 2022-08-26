@@ -31,21 +31,7 @@ Cat::~Cat( ) {
 /*****************************************************************************/
 
 void	Cat::makeSound( ) const {
-	std::cout << this->_type << ": \"meowww\"" << std::endl;
-}
 
-std::string	Cat::getType( ) const {
-	return this->_type;
-}
-
-
-/*****************************************************************************/
-/*                            Non-member functions                           */
-/*****************************************************************************/
-
-
-std::ostream &	operator<<( std::ostream & o, Cat const & rhs ) {
-
-	o << rhs.getType();
-	return o;
+	// *this uses << overload from Animal parent class
+	std::cout << *this << ": \"meowww\"" << std::endl;
 }

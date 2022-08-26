@@ -16,10 +16,6 @@ public:
 
 	virtual void		makeSound( ) const;
 
-	std::string	getType( ) const;
-
 };
-
-std::ostream & operator<<( std::ostream & o, Cat const & s );
 
 #endif // CAT_HPP_

@@ -5,7 +5,7 @@
 
 int	main( ) {
 
-	const Animal *	array[20];
+	Animal *	array[20];
 
 	for (int i = 0; i < 10; i++) {
 
@@ -19,8 +19,29 @@ int	main( ) {
 		( (Dog *)array[i] )->Dog::spewIdea();
 	}
 
+
+	// Showcases both copy constructor and copy assignment operator
+	Cat catCopy1 = *(Cat *)array[0];
+	Cat catCopy2;
+	
+	catCopy2 = *(Cat *)array[1];
+
+	Dog dogCopy1 = *(Dog *)array[10];
+	Dog dogCopy2;
+	
+	dogCopy2 = *(Dog *)array[11];
+
 	for (int i = 0; i < 20; i++)
 		delete array[i];
-	
+		
+
+	// To show they still work after deletion of original objects
+	catCopy1.makeSound();
+	catCopy2.makeSound();
+
+	dogCopy1.makeSound();
+	dogCopy2.makeSound();
+
+
 	return 0;
 }
