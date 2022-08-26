@@ -8,7 +8,7 @@
 			"type": "lldb",
 			"request": "launch",
 			"name": "Debug",
-			"program": "${workspaceFolder}/CPP04/ex03/interface",
+			"program": "${workspaceFolder}/CPP05/ex03/interns",
 			"args": [],
 			"cwd": "${workspaceFolder}"
 		}

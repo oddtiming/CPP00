@@ -4,6 +4,9 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
+// Sorry, I just wanted to test variadic macros, 
+// since we weren't allowed in C, hehe
+#define OUT(s) { std::cout << (s) << "\n" << std::endl; }
 
 #include <sstream>
 
@@ -43,7 +46,7 @@ Intern &	Intern::operator=( Intern const & rhs ) {
 
 // Returns true if the request matches exactly, or if it is a shorthand
 std::string	Intern::_askBoss( uint const & i ) {
-	return ( "Boss, did you mean the form " 
+	return ( "Boss, you asked for, but did you mean the form " 
 		+ _formReqs[i][0] + " " + _formReqs[i][1] + "?");
 }
 
@@ -58,35 +61,38 @@ bool	Intern::_glaresAtWords(
 
 void	Intern::_findForm( std::string const & req, uint & reqIndex ) {
 
-	// Request is case insensitive
-	std::string	reqToLower = cleanString( req );
+	// Request is treated case insensitive
+	std::string	reqToLower = strToLower( req );
 
-	// stringstream to split
+	// stringstream to split words
 	std::stringstream	reqss( reqToLower );
 
 	std::string words[2];
 
-	// To compare individually
-	std::getline(reqss, words[0], ' ');
-	std::getline(reqss, words[1], ' ');
+	// Split string into individual words, discard whitespaces
+	reqss >> std::ws >> words[0];
+	reqss >> std::ws >> words[1];
 
-	for ( uint i = 0; i < 3; i++ ) { // There are 3 known forms
 
-		// If first work doesn't match, check next form
+	for ( uint i = 0; i < 3; i++ ) { // 3 == nb known forms
+
+		// If first word doesn't match, check next form
 		if ( _glaresAtWords( words[0], _formReqs[i][0] ) == false )
 			continue ;
 
-		// If it is half a match, prompt the user to know
-		// if it was the intended match.
+		// If req is half a match, prompt the user to know
+		// if the current form was the intended match.
 		// Otherwise, throw an Exception
 		if ( _glaresAtWords( words[1], _formReqs[i][1] ) == false 
-				&& ask_yn( _askBoss(i) ) )
+				&& ask_yn( _askBoss(i) ) == false )
 			throw FormDoesNotExistException();
 		
-		// If two words match, assign reqIndex
+		// If two words match, assign form index to reqIndex
 		reqIndex = i;
 		return ;
 	}
+	// If no match is found
+	throw FormDoesNotExistException();
 }
 
 /*****************************************************************************/
@@ -96,8 +102,7 @@ void	Intern::_findForm( std::string const & req, uint & reqIndex ) {
 
 AForm * Intern::makeForm( std::string const & request, std::string const & target ) {
 
-	std::cout << "Intern is processing request :\""
-		<< request << "\"" << std::endl;
+	OUT("\nIntern is processing request: \"" + request + "\"" );
 
 	uint	reqIndex = 0;
 	
@@ -107,10 +112,14 @@ AForm * Intern::makeForm( std::string const & request, std::string const & targe
 	}
 	catch (FormDoesNotExistException e) {
 
-		std::cout << e.what() << ": \"" << request << "\"" << std::endl;
+		std::cout << e.what() << ": \"" << request << "\"\n" << std::endl;
 		return NULL;
 	}
-	catch (std::exception e) { displErr(e); }
+	catch (std::exception e) { _displErr(e); }
+
+	OUT("\n\t* Intern found "
+			+ _formReqs[reqIndex][0] + " " 
+			+ _formReqs[reqIndex][1] + " form! *");
 
 	switch ( reqIndex ) {
 		case 0:
@@ -127,7 +136,7 @@ AForm * Intern::makeForm( std::string const & request, std::string const & targe
 
 
 const std::string Intern::_formReqs[3][2] = {
-	{ "shrubbery", " creation" },	// id = 0
-	{ "robotomy", " request" },		// id = 1
-	{ "presidential", " pardon" }	// id = 2
+	{ "shrubbery", "creation" },	// id = 0
+	{ "robotomy", "request" },		// id = 1
+	{ "presidential", "pardon" }	// id = 2
 };

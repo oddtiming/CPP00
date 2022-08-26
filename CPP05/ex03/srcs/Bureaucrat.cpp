@@ -104,7 +104,7 @@ void Bureaucrat::demote( ) {
 
 void Bureaucrat::signForm( AForm & toSign ) {
 
-	std::cout << *this << " asks to sign the form \n" << toSign // toSign.getName()
+	std::cout << *this << " asks to sign the form " << toSign.getName()
 		<< "\n\t..." << std::endl;
 
 	// Try/catch block to check if the bureaucrat is allowed to do that
@@ -124,7 +124,7 @@ void Bureaucrat::signForm( AForm & toSign ) {
 
 void Bureaucrat::executeForm( AForm & toSign ) {
 
-	std::cout << *this << " asks to execute the form \n" << toSign // toSign.getName()
+	std::cout << *this << " asks to execute the form " << toSign.getName()
 		<< "\n\t..." << std::endl;
 
 	// Try/catch block to check if the bureaucrat is allowed to do that
@@ -138,7 +138,7 @@ void Bureaucrat::executeForm( AForm & toSign ) {
  	}
 
 	// In case of success 
-	std::cerr << *this << " has successfully executed the form " << toSign.getName() 
+	std::cout << *this << " has successfully executed the form " << toSign.getName() 
 		<< "!\n" << std::endl;
 
 }

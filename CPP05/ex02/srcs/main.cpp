@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-void	displErr( std::exception & e ) {
+void	_displErr( std::exception & e ) {
 
 	std::cerr << "\n" << e.what() << std::endl;
 }
@@ -30,24 +30,24 @@ int main( ) {
 	// Needs valid target to be created
 	try { 
 		PresidentialPardonForm wrongForm( "" ); }
-			catch (std::exception & e) { displErr(e); }
+			catch (std::exception & e) { _displErr(e); }
 
 	// Grade too low to sign, error caught in bureaucrat
 	try { 
 		lowerBob.signForm( shrubF ); }
-			catch (std::exception & e) { displErr(e); }
+			catch (std::exception & e) { _displErr(e); }
 
 
 	// Cannot execute unsigned form
 	try { 
 		topBob.executeForm( presF ); }
-			catch (std::exception & e) { displErr(e); }
+			catch (std::exception & e) { _displErr(e); }
 
 
 	// Form already signed
 	try { 
 		topBob.signForm( presF ); }
-			catch (std::exception & e) { displErr(e); }
+			catch (std::exception & e) { _displErr(e); }
 
 	topBob.signForm( robotF );
 	
@@ -56,7 +56,7 @@ int main( ) {
 	// Now has grade too low
 	try { 
 		middleBob.executeForm( robotF ); }
-			catch (std::exception & e) { displErr(e); }
+			catch (std::exception & e) { _displErr(e); }
 
 	// Should succeed 50% of the time in robotomizing $target
 	topBob.executeForm( robotF );

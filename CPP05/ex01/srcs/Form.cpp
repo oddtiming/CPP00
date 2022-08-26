@@ -123,7 +123,7 @@ void Form::beExecuted( Bureaucrat & bureaucrat ) {
 
 std::ostream &	operator<<( std::ostream & o, Form const & rhs ) {
 
-	o << rhs.getName() << " form : \n" 
+	o << rhs.getName() << ":" 
 		<< "\n\t-w- Sign Grade is \t: " << rhs.getSignGrade() << "\t -w-"
 		<< "\n\t--x Execute Grade is \t: " << rhs.getExecuteGrade() << "\t --x"
 		<< "\n\t--x is it signed? \t: " << (rhs.isSigned() ? "yes" : "no") << "\t --x" << std::endl;

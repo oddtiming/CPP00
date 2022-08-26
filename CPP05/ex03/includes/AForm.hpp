@@ -14,46 +14,46 @@ class Bureaucrat;
 class AForm
 {
 
-	private:
-		std::string const	_name;
-		bool				_isSigned;
-		uint const			_signGrade;
-		uint const			_executeGrade;
+private:
+	std::string const	_name;
+	bool				_isSigned;
+	uint const			_signGrade;
+	uint const			_executeGrade;
+
+protected:
+	/**
+	 * 	IMPORTANT: The following virtual function makes the class abstract
+	 * 
+	 */
+	virtual void _executeFormAction( ) const = 0;
+
+public:
+	// Constructors
+	AForm( );
+	AForm( AForm const & src );
+	AForm( std::string const & name, 
+			uint const & signGrade, 
+			uint const & executeGrade );
+
+	// Assignment operator
+	AForm &	operator=( AForm const & rhs );
+
+	// Destructor
+	virtual ~AForm( );
+
+	// Getters/Setters
+	std::string const & getName( ) const;
+	uint const & 		getSignGrade( ) const;
+	uint const & 		getExecuteGrade( ) const;
+	bool const & 		isSigned( ) const;
 	
-	protected:
-		/**
-		 * 	IMPORTANT: The following virtual function makes the class abstract
-		 * 
-		 */
-		virtual void _executeFormAction( ) const = 0;
-
-	public:
-		// Constructors
-		AForm( );
-		AForm( AForm const & src );
-		AForm( std::string const & name, 
-				uint const & signGrade, 
-				uint const & executeGrade );
-
-		// Assignment operator
-		AForm &	operator=( AForm const & rhs );
-
-		// Destructor
-		virtual ~AForm( );
-
-		// Getters/Setters
-		std::string const & getName( ) const;
-		uint const & 		getSignGrade( ) const;
-		uint const & 		getExecuteGrade( ) const;
-		bool const & 		isSigned( ) const;
-		
-		// Member functions
-		void beSigned( Bureaucrat & bureaucrat );
-		void execute( Bureaucrat & executor ) const;
+	// Member functions
+	void beSigned( Bureaucrat & bureaucrat );
+	void execute( Bureaucrat & executor ) const;
 
 
 
-		// Exceptions
+	// Exceptions
 
 	/**
 	 *  https://stackoverflow.com/questions/23742448/c-how-to-pass-parameters-to-custom-exceptions
@@ -62,60 +62,51 @@ class AForm
 	 *  https://stackoverflow.com/questions/59919357/weird-error-on-exception-specification-of-overriding-function-is-more-lax-than
 	 * 	Why virtual destructor is necessary
 	 * 
+	 * 
+	 * 		To pass string in Exception, best way seems to pass it as construction
+	 * 
 	 */
 
+		class FormException : public std::exception {
+			protected:
+				std::string	_e_msg;
+
+			public:
+        		virtual ~FormException() throw() { return ; }
+				FormException( std::string const & e_msg ) : _e_msg( e_msg ) { }
+				virtual const char* what() const throw() { return _e_msg.c_str(); }
+		};
 		
-		class GradeTooLowException : public std::exception {
-			std::string	_e_msg;
-
+		class GradeTooLowException : public FormException {
 			public:
-        		virtual ~GradeTooLowException() throw() { return ; }
-				GradeTooLowException( std::string const & en ) : _e_msg( en + " form requires a higher grade." ) { }
-				virtual const char* what() const throw() { return _e_msg.c_str(); }
-
+				GradeTooLowException( std::string const & en ) 
+					: FormException( en + " form has already been signed." ) { }
+		};
+		class GradeTooHighException : public FormException {
+			public:
+				GradeTooHighException( std::string const & en ) 
+					: FormException( en + " form has already been signed." ) { }
 		};
 
-		class GradeTooHighException : public std::exception {
-			std::string	_e_msg;
-
+		class FormAlreadySignedException : public FormException {
 			public:
-        		virtual ~GradeTooHighException() throw() { return ; }
-				GradeTooHighException( std::string const & en ) : _e_msg( en + " form requires a lower grade." ) { }
-				virtual const char* what() const throw() { return _e_msg.c_str(); }
-
+				FormAlreadySignedException( std::string const & en ) 
+					: FormException( en + " form has already been signed." ) { }
 		};
 
-		class FormAlreadySignedException : public std::exception {
-			std::string	_e_msg;
-
+		class FormNotSignedException : public FormException {
 			public:
-        		virtual ~FormAlreadySignedException() throw() { return ; }
-				FormAlreadySignedException( std::string const & en ) : _e_msg( en + " form has already been signed." ) { }
-				virtual const char* what() const throw() { return _e_msg.c_str(); }
-
+				FormNotSignedException( std::string const & en ) 
+					: FormException( en + " form has already been signed." ) { }
 		};
 
-		class FormNotSignedException : public std::exception {
-			std::string	_e_msg;
-
+		class InvalidTargetException : public FormException {
 			public:
-        		virtual ~FormNotSignedException() throw() { return ; }
-				FormNotSignedException( std::string const & en ) : _e_msg( en + " form needs to be signed first." ) { }
-				virtual const char* what() const throw() { return _e_msg.c_str(); }
-
+				InvalidTargetException( std::string const & en ) 
+					: FormException( en + " form has already been signed." ) { }
 		};
 
-		class InvalidTargetException : public std::exception {
-			std::string	_e_msg;
 
-			public:
-        		virtual ~InvalidTargetException() throw() { return ; }
-				InvalidTargetException( std::string const & en ) : _e_msg( en + " needs a valid target." ) { }
-				virtual const char* what() const throw() { return _e_msg.c_str(); }
-
-		};
-
-	
 };
 
 std::ostream & operator<<( std::ostream & o, AForm const & s );

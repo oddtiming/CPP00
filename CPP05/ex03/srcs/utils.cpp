@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <stdexcept>
 
@@ -18,30 +19,35 @@ bool	ask_yn( std::string prompt ) {
 	return c == 'y' ? true : false;
 }
 
+std::string	strToLower(std::string str) {
 
-std::string	cleanString(std::string str) {
-
-	std::string clean;
-	id_t		i = 0;
+	std::string toLower;
+	size_t		i = 0;
 	
-	while ( isspace(str[i]) )
-		i++;
-
 	while ( i < str.length() ) {
 
-		clean += tolower(str[i++]);	
-
-		while (isspace(str[i]))
-			i++;
+		toLower += tolower(str[i++]);	
 	}
-	if ( clean.at( clean.length() - 1 ) == ' ' )
-		clean.erase( clean.length() - 1 );
 
-	return clean;
+	return toLower;
 }
 
 
-void	displErr( std::exception & e ) {
-	std::cerr << "\n" << e.what() << std::endl;
+void	_displErr( std::exception & e ) {
+	std::cerr << "\n" << e.what() << "\n" << std::endl;
 }
 
+void	_printHeader( std::string const & text ) {
+	std::cout << "\n" << std::setw(40) << std::setfill('*') << "\n";
+	std::cout << "\t* " << text << " *" << "\n";
+	std::cout << std::setw(40) << std::setfill('*') << "\n" << std::endl;
+}
+
+bool	isQuitInput( std::string const & input ) {
+	if ( input.empty() || input == "exit" || input == "EXIT"
+			|| input == "quit" || input == "QUIT" ) {
+		std::cout << "\n\tBye for now, boss!\n" << std::endl;
+		return true;
+	}
+	return false;
+}
