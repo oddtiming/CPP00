@@ -56,7 +56,7 @@ ScavTrap::~ScavTrap( ) {
 void		ScavTrap::guardGate( ) {
 
 	std::cout << std::setw( 80 ) << std::setfill('*') << "\n";
-	std::cout << "\t\t\tScavTrap " << *this 
+	std::cout << "\t\tScavTrap " << *this 
 		<< " is now in guard mode!" << std::endl;
 	std::cout << std::setw( 80 ) << std::setfill('*') << "\n" << std::endl;
 

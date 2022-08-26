@@ -55,7 +55,7 @@ void		DiamondTrap::whoAmI( ) {
 
 	std::cout << "\n\t\twhoamI()\n";
 	std::cout << "_name \t\t\t: " << _name << std::endl;
-	std::cout << "this->ClapTrap::_name\t: " << this->ClapTrap::_name << "\n" << std::endl;
+	std::cout << "ClapTrap::_name\t: " << ClapTrap::_name << "\n" << std::endl;
 	return ;
 }
 
