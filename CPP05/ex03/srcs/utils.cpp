@@ -16,6 +16,10 @@ bool	ask_yn( std::string prompt ) {
 		std::cout << "Please enter a y/n answer" << std::endl;
 		return ask_yn( prompt );
 	}
+
+	std::string	buff;
+	std::cin >> buff;
+
 	return c == 'y' ? true : false;
 }
 
