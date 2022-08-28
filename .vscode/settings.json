@@ -72,6 +72,8 @@
 		"__functional_03": "cpp",
 		"__bits": "cpp",
 		"clocale": "cpp",
-		"concepts": "cpp"
+		"concepts": "cpp",
+		"memory_resource": "cpp",
+		"*.tpp": "cpp"
 	}
 }
