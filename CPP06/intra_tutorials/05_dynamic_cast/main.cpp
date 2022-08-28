@@ -41,8 +41,8 @@ int	main( ) {
 		std::cout << "dynamic_cast<Child1 *>(b) worked!" << std::endl;
 	}	
 
-	// Explicit downcast
-	//	This works
+	// Explicit downcast to wrong type
+	//	returns null
 	Child2 * e = dynamic_cast<Child2 *>(b);
 	if ( e == NULL ) {
 		std::cout << "dynamic_cast<Child2 *>(b) didn't work" << std::endl;
