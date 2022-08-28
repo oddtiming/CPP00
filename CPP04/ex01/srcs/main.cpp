@@ -42,6 +42,5 @@ int	main( ) {
 	dogCopy1.makeSound();
 	dogCopy2.makeSound();
 
-
 	return 0;
 }

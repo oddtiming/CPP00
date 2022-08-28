@@ -10,10 +10,12 @@ class Cat : public Animal {
 public:
 /* Functions */
 	Cat( );
-	~Cat( );
 	Cat( Cat const & src );
+
 	Cat &	operator=( Cat const & rhs );
 
+	virtual ~Cat( );
+	
 	virtual void		makeSound( ) const;
 
 };

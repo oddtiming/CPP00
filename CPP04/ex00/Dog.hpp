@@ -10,10 +10,12 @@ class Dog : public Animal {
 public:
 /* Functions */
 	Dog( );
-	~Dog( );
 	Dog( Dog const & src );
+	
 	Dog &	operator=( Dog const & rhs );
 
+	virtual ~Dog( );
+	
 	virtual void		makeSound( ) const;
 };
 

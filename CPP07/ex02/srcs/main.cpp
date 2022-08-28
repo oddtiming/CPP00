@@ -26,22 +26,34 @@ int	main( ) {
 	cout << d << endl;
 	cout << e << endl;
 
-	::iter( d.getDataNonConst(), 10, flipBool);
+	::iter( d.getData(), 10, flipBool);
 
 	cout << d << endl;
 
 	int i = 3;
 	Array< int > *				f = new Array< int >( 10, i );
-	cout << f << endl;
-	// Array< int > 				g = *f;
-	// cout << g << endl;
+	cout << *f << endl;
+	Array< int > 				g = *f;
+	cout << g << endl;
 	Array< int > 				h;
 	h = *f;
 	cout << h << endl;
 
 	delete f;
-	// cout << g << endl;
+	cout << g << endl;
 	cout << h << endl;
+
+	try {
+		cout << g[11];
+	} catch (std::exception & e) {
+		std::cerr << e.what() << endl;
+	}	
+
+	try {
+		cout << g[-1];
+	} catch (std::exception & e) {
+		std::cerr << e.what() << endl;
+	}
 	
 
 	return 0;

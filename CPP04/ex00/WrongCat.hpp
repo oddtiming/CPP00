@@ -10,11 +10,11 @@ class WrongCat : public WrongAnimal {
 public:
 /* Functions */
 	WrongCat( );
-	~WrongCat( );
+	virtual ~WrongCat( );
 	WrongCat( WrongCat const & src );
 	WrongCat &	operator=( WrongCat const & rhs );
 
-	virtual void		makeSound( ) const;
+	void		makeSound( ) const;
 
 };
 

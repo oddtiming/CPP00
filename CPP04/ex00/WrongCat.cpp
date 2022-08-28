@@ -31,5 +31,5 @@ WrongCat::~WrongCat( ) {
 /*****************************************************************************/
 
 void	WrongCat::makeSound( ) const {
-	return this->WrongAnimal::makeSound();
+	std::cout << "meeeeeeeeeow" << std::endl;
 }
