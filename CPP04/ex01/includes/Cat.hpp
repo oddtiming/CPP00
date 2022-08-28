@@ -26,6 +26,5 @@ public:
 
 };
 
-
 #endif // CAT_HPP_
  
