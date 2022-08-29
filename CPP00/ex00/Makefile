@@ -6,7 +6,7 @@ GREEN		=	\033[0;32m
 BLUE		=	\033[0;34m
 CYAN		=	\033[0;36m
 RED			=	\033[0;31m
-ON_RED		=	\033[41m
+UYELLOW		=	\033[4;33m
 RESET_COL	=	\033[0m
 
 CFILES	=	megaphone.cpp
@@ -39,7 +39,7 @@ all: $(NAME)
 	fi
 
 $(NAME):	pretty_print $(OBJS)
-	@echo -e "\n$(CYAN)>>>>>>>> Compiling $(NAME) ...$(RESET_COL)$(COMPILE_EXE_OUT)"
+	@echo -e "\n$(CYAN)>>>>>>>> Compiling into executable $(UYELLOW)./$(NAME)$(RESET_COL)$(COMPILE_EXE_OUT)"
 
 pretty_print: 
 	@echo -e "\n--------------------- $(NAME) ---------------------"

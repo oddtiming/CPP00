@@ -5,6 +5,7 @@ SHELL	=	bash
 GREEN		=	\033[0;32m
 CYAN		=	\033[0;36m
 RED			=	\033[0;31m
+UYELLOW		=	\033[4;33m
 RESET_COL	=	\033[0m
 
 CFILES	=	Animal.cpp \
@@ -43,7 +44,7 @@ $(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
 
 $(NAME):	pretty_print $(OBJ_DIR) $(OBJS)
-	@echo -e "\n$(CYAN)>>>>>>>> Compiling $(NAME) ...$(RESET_COL)$(COMPILE_EXE_OUT)"
+	@echo -e "\n$(CYAN)>>>>>>>> Compiling into executable $(UYELLOW)./$(NAME)$(RESET_COL)$(COMPILE_EXE_OUT)"
 
 pretty_print: 
 	@echo -e "\n--------------------- $(NAME) ---------------------"
