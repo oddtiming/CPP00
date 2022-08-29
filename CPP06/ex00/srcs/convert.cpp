@@ -24,12 +24,14 @@ void	convertNb( string &str, long double const & ldbl ) {
 	} catch (std::exception e) {
 		cout << e.what() << endl; }
 	
+	
 	cout << "int\t:";
 	try {
 		stoi( str ); // test for overflow separately, to account for scientific notation
 		cout << static_cast< int >(ldbl) << endl; 
 	} catch (std::out_of_range & e) {
 		cout << (ldbl < 0 ? "negative" : "positive") << " overflow" << endl; }
+
 
 	cout << "float\t:";
 	try {
@@ -39,6 +41,7 @@ void	convertNb( string &str, long double const & ldbl ) {
 		
 	} catch (std::out_of_range & e) {
 		cout << (ldbl < 0 ? "negative" : "positive") << " overflow" << endl; }
+
 
 	cout << "double\t:";
 	try {

@@ -74,6 +74,11 @@
 		"clocale": "cpp",
 		"concepts": "cpp",
 		"memory_resource": "cpp",
-		"*.tpp": "cpp"
+		"*.tpp": "cpp",
+		"map": "cpp",
+		"list": "cpp",
+		"__tree": "cpp",
+		"numeric": "cpp",
+		"queue": "cpp"
 	}
 }
