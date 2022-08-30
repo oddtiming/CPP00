@@ -18,8 +18,6 @@ long long getTimeInNanoseconds( ) {
 
 }
 
-long long	getTimeInNanoseconds( );
-
 uint	_random_gen( ) {
 	
 	srand( static_cast<uint>(getTimeInNanoseconds()) );
