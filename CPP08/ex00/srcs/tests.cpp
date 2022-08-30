@@ -49,3 +49,12 @@ void	queue_tests() {
 	
 }
 
+
+void	stack_tests() {
+	std::stack<int>				p;
+	
+	_print_header("Stack tests");
+
+	_generate_tests(p);
+	
+}

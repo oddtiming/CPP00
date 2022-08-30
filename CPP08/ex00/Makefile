@@ -1,4 +1,4 @@
-NAME	=	convert
+NAME	=	easyfind
 
 SHELL	=	bash
 
@@ -10,6 +10,7 @@ RESET_COL	=	\033[0m
 
 CFILES	=	main.cpp \
 			tests.cpp \
+			print_utils.cpp \
 			utils.cpp
 
 INC				:= ./includes
