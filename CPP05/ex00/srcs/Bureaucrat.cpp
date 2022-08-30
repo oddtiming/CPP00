@@ -9,7 +9,7 @@ Bureaucrat::Bureaucrat( ) :
 		_grade( 150 )
 {
 	std::cout << "Bureaucrat constructor called by " << _name 
-	<< ". Grade given is : " << _grade << std::endl;
+			  << ". Grade given is : " << _grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat( std::string const & name, uint const & grade ) :
@@ -24,12 +24,13 @@ Bureaucrat::Bureaucrat( std::string const & name, uint const & grade ) :
 	}
 
 	std::cout << "Bureaucrat parametric constructor called by " << _name 
-	<< " with grade : " << _grade << std::endl;
+			  << " with grade : " << _grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat const & src )
 {
 	std::cout << "Bureaucrat copy constructor called by " << _name << std::endl;
+	this->_grade = src._grade;
 	*this = src;
 }
 
