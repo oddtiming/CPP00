@@ -55,8 +55,8 @@ class Bureaucrat
 	*  	New Function
 	*  
 	*/
-		void signForm( AForm & toSign );
-		void executeForm( AForm & toSign );
+		void signForm( AForm & toSign ) const;
+		void executeForm( AForm const & toSign ) const;
 
 	
 	private:

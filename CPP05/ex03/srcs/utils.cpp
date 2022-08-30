@@ -17,8 +17,9 @@ bool	ask_yn( std::string prompt ) {
 		return ask_yn( prompt );
 	}
 
-	std::string	buff;
-	std::cin >> buff;
+	// this was an atempt to flush stdin, but a bad one :(
+	// std::string	buff;
+	// std::cin >> buff;
 
 	return c == 'y' ? true : false;
 }
@@ -42,9 +43,9 @@ void	_displErr( std::exception & e ) {
 }
 
 void	_printHeader( std::string const & text ) {
-	std::cout << "\n" << std::setw(40) << std::setfill('*') << "\n";
+	std::cout << "\n" << std::setw(text.size() + 21) << std::setfill('*') << "\n";
 	std::cout << "\t* " << text << " *" << "\n";
-	std::cout << std::setw(40) << std::setfill('*') << "\n" << std::endl;
+	std::cout << std::setw(text.size() + 21) << std::setfill('*') << "\n" << std::endl;
 }
 
 bool	isQuitInput( std::string const & input ) {

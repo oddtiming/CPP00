@@ -12,13 +12,13 @@
 class ShrubberyCreationForm : public AForm {
 
 private:
-/* Attributes */
+	/* Attributes */
 	const std::string			_target;
 	
-/* Implementation of AForm's virtual abstract declaration */
+	/* Implementation of AForm's purely virtual function */
 	virtual void _executeFormAction( ) const;
 
-/* Non-member attribute to store the trees */
+	/* Non-member attribute to store the trees */
 	static std::string			_trees[3];
 
 public:

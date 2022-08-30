@@ -6,6 +6,8 @@ int main( ) {
 	Bureaucrat billyBob( "billyBob", 1 );
 	Bureaucrat unnamed;
 
+	std::cout << unnamed << std::endl;
+
 	std::cout << billyBob << " does indeed exist!";
 
 	try {

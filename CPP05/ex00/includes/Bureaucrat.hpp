@@ -48,10 +48,10 @@ class Bureaucrat
 		void promote( );
 		void demote( );
 
-	
+	// todo: NEEDS TO BE CONST
 	private:
-		std::string		_name;
-		uint			_grade;
+		std::string	const	_name;
+		uint				_grade;
 	
 };
 

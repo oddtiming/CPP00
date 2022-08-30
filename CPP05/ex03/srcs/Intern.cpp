@@ -45,21 +45,24 @@ Intern &	Intern::operator=( Intern const & rhs ) {
 
 
 // Returns true if the request matches exactly, or if it is a shorthand
-std::string	Intern::_askBoss( uint const & i ) {
+std::string	Intern::_askBoss( uint const & i ) const 
+{
 	return ( "Boss, you asked for, but did you mean the form " 
 		+ _formReqs[i][0] + " " + _formReqs[i][1] + "?");
 }
 
-// Returns true if the request matches exactly, or if it is shortened
-bool	Intern::_glaresAtWords( 
-	std::string const & reqWord, std::string const & formWord ) {
 
+// Returns true if the request matches exactly, or if it is shortened
+bool	Intern::_glaresAtWords(std::string const & reqWord, 
+							   std::string const & formWord ) const
+{
 	return ( reqWord == formWord.substr( 0, reqWord.length() )
-		&& reqWord.length() > 2 );
+		  && reqWord.length() > 2 );
 }
 
 
-void	Intern::_findForm( std::string const & req, uint & reqIndex ) {
+void	Intern::_findForm( std::string const & req, uint & reqIndex ) const
+{
 
 	// Request is treated case insensitive
 	std::string	reqToLower = strToLower( req );
@@ -100,7 +103,8 @@ void	Intern::_findForm( std::string const & req, uint & reqIndex ) {
 /*****************************************************************************/
 
 
-AForm * Intern::makeForm( std::string const & request, std::string const & target ) {
+AForm * Intern::makeForm( std::string const & request, std::string const & target ) const
+{
 
 	OUT("\nIntern is processing request: \"" + request + "\"" );
 

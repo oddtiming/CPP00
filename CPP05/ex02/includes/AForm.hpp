@@ -39,7 +39,7 @@ class AForm
 		AForm &	operator=( AForm const & rhs );
 
 		// Destructor
-		~AForm( );
+		virtual ~AForm( );
 
 		// Getters/Setters
 		std::string const & getName( ) const;
@@ -48,8 +48,8 @@ class AForm
 		bool const & 		isSigned( ) const;
 		
 		// Member functions
-		void beSigned( Bureaucrat & bureaucrat );
-		void execute( Bureaucrat & executor ) const;
+		void beSigned( Bureaucrat const & bureaucrat );
+		void execute( Bureaucrat const & executor ) const;
 
 
 

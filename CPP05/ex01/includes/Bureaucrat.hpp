@@ -56,12 +56,12 @@ class Bureaucrat
 	*  
 	*/
 		void signForm( Form & toSign );
-		void executeForm( Form & toSign );
+		void executeForm( Form const & toExec ) const;
 
 	
 	private:
-		std::string		_name;
-		uint			_grade;
+		std::string	const	_name;
+		uint				_grade;
 	
 };
 

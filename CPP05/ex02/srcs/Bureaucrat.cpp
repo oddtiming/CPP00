@@ -102,7 +102,7 @@ void Bureaucrat::demote( ) {
 	this->_grade++;
 }
 
-void Bureaucrat::signForm( AForm & toSign ) {
+void Bureaucrat::signForm( AForm & toSign ) const {
 
 	std::cout << *this << " asks to sign the form \n" << toSign // toSign.getName()
 		<< "\n\t..." << std::endl;
@@ -122,7 +122,7 @@ void Bureaucrat::signForm( AForm & toSign ) {
 		<< "!\n" << std::endl;
 }
 
-void Bureaucrat::executeForm( AForm & toSign ) {
+void Bureaucrat::executeForm( AForm const & toSign ) const {
 
 	std::cout << *this << " asks to execute the form \n" << toSign // toSign.getName()
 		<< "\n\t..." << std::endl;

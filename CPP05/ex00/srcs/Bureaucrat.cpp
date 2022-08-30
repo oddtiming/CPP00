@@ -27,11 +27,11 @@ Bureaucrat::Bureaucrat( std::string const & name, uint const & grade ) :
 			  << " with grade : " << _grade << std::endl;
 }
 
-Bureaucrat::Bureaucrat( Bureaucrat const & src )
+Bureaucrat::Bureaucrat( Bureaucrat const & src ) :
+		_name( src._name ),
+		_grade( src._grade )
 {
 	std::cout << "Bureaucrat copy constructor called by " << _name << std::endl;
-	this->_grade = src._grade;
-	*this = src;
 }
 
 Bureaucrat::~Bureaucrat( )
@@ -43,11 +43,12 @@ Bureaucrat::~Bureaucrat( )
 /*                           Assignment operator                             */
 /*****************************************************************************/
 
+
+// Note : this copy assignment will not copy the name, as it is const
 Bureaucrat &	Bureaucrat::operator=( Bureaucrat const & rhs ) {
 
 	std::cout << "Bureaucrat assignment operator called by " << _name << std::endl;
 
-	this->_name = rhs.getName();
 	this->_grade = rhs.getGrade();
 
 	return *this;

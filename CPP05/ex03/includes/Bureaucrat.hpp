@@ -56,7 +56,7 @@ class Bureaucrat
 	*  
 	*/
 		void signForm( AForm & toSign );
-		void executeForm( AForm & toSign );
+		void executeForm( AForm const & toSign ) const;
 
 	
 	private:

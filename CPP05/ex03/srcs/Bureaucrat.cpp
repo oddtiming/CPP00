@@ -122,7 +122,7 @@ void Bureaucrat::signForm( AForm & toSign ) {
 		<< "!\n" << std::endl;
 }
 
-void Bureaucrat::executeForm( AForm & toSign ) {
+void Bureaucrat::executeForm( AForm const & toSign ) const {
 
 	std::cout << *this << " asks to execute the form " << toSign.getName()
 		<< "\n\t..." << std::endl;

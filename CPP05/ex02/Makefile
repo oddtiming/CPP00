@@ -56,14 +56,18 @@ $(NAME):	pretty_print $(OBJ_DIR) $(OBJS)
 pretty_print: 
 	@echo -e "\n--------------------- $(NAME) ---------------------"
 
+clean_files:
+	@echo -e "$(RED)>>>>>>>> Deleting $(GENERATED_FILES) $(RESET_COL)"
+	@$(RM_FILES)
+
 clean:
 	@echo -e "$(RED)>>>>>>>> Deleting obj files$(RESET_COL)"
 	@$(RM_OBJS)
 
-fclean:	clean
+fclean:	clean clean_files
 	@echo -e "$(RED)>>>>>>>> Deleting ./$(NAME) $(RESET_COL)"
 	@$(RM_EXE)
 
 re:	fclean all
 
-.PHONY: all clean fclean re pretty_print print_out
+.PHONY: all clean clean_files fclean re pretty_print print_out

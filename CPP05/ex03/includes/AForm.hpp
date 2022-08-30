@@ -48,8 +48,8 @@ public:
 	bool const & 		isSigned( ) const;
 	
 	// Member functions
-	void beSigned( Bureaucrat & bureaucrat );
-	void execute( Bureaucrat & executor ) const;
+	void beSigned( Bureaucrat const & bureaucrat );
+	void execute( Bureaucrat const & executor ) const;
 
 
 

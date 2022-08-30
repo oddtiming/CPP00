@@ -42,8 +42,8 @@ class Form
 		bool const & 		isSigned( ) const;
 		
 		// Member functions
-		void beSigned( Bureaucrat & bureaucrat );
-		void beExecuted( Bureaucrat & bureaucrat );
+		void beSigned( Bureaucrat const & bureaucrat );
+		void beExecuted( Bureaucrat const & executor ) const;
 
 
 

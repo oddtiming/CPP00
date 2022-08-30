@@ -74,7 +74,7 @@ bool const &	 Form::isSigned( ) const { return this->_isSigned; }
 /*                              Member functions                             */
 /*****************************************************************************/
 
-void Form::beSigned( Bureaucrat & bureaucrat ) {
+void Form::beSigned( Bureaucrat const & bureaucrat ) {
 
 	uint	grade = bureaucrat.getGrade();
 
@@ -96,7 +96,7 @@ void Form::beSigned( Bureaucrat & bureaucrat ) {
 
 }
 
-void Form::beExecuted( Bureaucrat & bureaucrat ) {
+void Form::beExecuted( Bureaucrat const & bureaucrat ) const {
 
 	uint	grade = bureaucrat.getGrade();
 

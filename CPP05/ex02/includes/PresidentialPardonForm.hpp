@@ -12,9 +12,10 @@
 class PresidentialPardonForm : public AForm {
 
 private:
-/* Attributes */
+	/* Attributes */
 	const std::string		_target;
-/* Implementation of AForm's virtual abstract declaration */
+	
+	/* Implementation of AForm's purely virtual function */
 	virtual void _executeFormAction( ) const;
 
 public:
