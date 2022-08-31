@@ -5,4 +5,6 @@
  * 
  * @return Zombie* needs to be freed
  */
-Zombie*	newZombie( std::string name ) { return new Zombie( name ); }
+Zombie*	newZombie( std::string name ) { 
+	return new Zombie( name );
+}

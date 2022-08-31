@@ -15,8 +15,8 @@ public:
 	~Zombie( void );
 
 	/* Functions */
-	void		announce( void );
-	std::string	getName( void );
+	void		announce( void ) const;
+	std::string	const & getName( void ) const;
 
 };
 

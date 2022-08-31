@@ -5,20 +5,15 @@ Zombie::Zombie( std::string name ) : _name(name) {
 }
 
 Zombie::~Zombie( void ) {
- 
-	std::cout << this->_name << " died atrociously. sad." << std::endl;
- 
+ 	std::cout << this->_name << " died atrociously. sad." << std::endl;
 	return ;
 }
 
-
-void	Zombie::announce( void ) {
-
+void	Zombie::announce( void ) const {
 	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-
 	return ;
 }
 
-std::string	Zombie::getName( void ) {
+std::string const &	Zombie::getName( void ) const {
 	return this->_name;
 }

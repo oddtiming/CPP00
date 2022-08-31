@@ -6,15 +6,17 @@
 class Weapon {
 
 private:
-/* Attributes */
+	/* Attributes */
 	std::string	_type;
 
 public:
-/* Functions */
+	/* Ctors/Dtors */
 	Weapon( std::string );
 	~Weapon( void );
-	std::string getType( void );
-	void		setType( std::string type );
+
+	/* Member Functions */
+	std::string const & 	getType( void ) const;
+	void					setType( std::string type );
 
 };
 

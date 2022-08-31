@@ -8,15 +8,19 @@ HumanA::HumanA( std::string name, Weapon& weapon ) :
 }
 
 HumanA::~HumanA( void ) {
-
-	std::cout << "\n\t" << "HumanA \"" << this->_name 
-		<< "\" has been destroyed" << std::endl;
+	std::cout << "\n\t" 
+			  << "HumanA \"" 
+			  << this->_name 
+			  << "\" has been destroyed" 
+			  << std::endl;
 	return ;
 }
 
-void	HumanA::attack( void ) {
-
-	std::cout << "\n\t" << "\"" << _name << "\" attacks with the \""
-		<< _weapon.getType() << "\". It's very effective!" << std::endl;
+void	HumanA::attack( void ) const {
+	std::cout << "\n\t\"" 
+			  << this->_name << "\" attacks with the \""
+			  << this->_weapon.getType() 
+			  << "\". It's very effective!" 
+			  << std::endl;
 	return ;
 }

@@ -18,7 +18,6 @@ public:
 	void	complain( std::string level );
 	
 /* Attributes */
-	static std::string levels[NB_LEVELS];
 
 
 private:
@@ -32,10 +31,11 @@ private:
 
 
 /* Attributes */
-	static std::string	_debugMsgs[NB_MSGS];
-	static std::string	_infoMsgs[NB_MSGS];
-	static std::string	_warningMsgs[NB_MSGS];
-	static std::string	_errorMsgs[NB_MSGS];
+	static std::string const	_levels[NB_LEVELS];
+	static std::string const	_debugMsgs[NB_MSGS];
+	static std::string const	_infoMsgs[NB_MSGS];
+	static std::string const	_warningMsgs[NB_MSGS];
+	static std::string const	_errorMsgs[NB_MSGS];
 };
 
 #endif // HARL_HPP_

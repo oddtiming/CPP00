@@ -15,15 +15,12 @@ Zombie::~Zombie( void ) {
 	return ;
 }
 
-
-void	Zombie::announce( void ) {
-
+void	Zombie::announce( void ) const {
 	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-
 	return ;
 }
 
-std::string	Zombie::getName( void ) {
+std::string const &	Zombie::getName( void ) const {
 	return this->_name;
 }
 

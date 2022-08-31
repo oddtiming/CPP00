@@ -11,13 +11,14 @@ private:
 	std::string	_name;
 	
 public:
+	// Exposed a default constructor to allow new[] operator to work
 	Zombie( void );
 	Zombie( std::string name );
 	~Zombie( void );
 
 	/* Functions */
-	void		announce( void );
-	std::string	getName( void );
+	void		announce( void ) const;
+	std::string	const & getName( void ) const;
 	void		setName( std::string );
 
 };

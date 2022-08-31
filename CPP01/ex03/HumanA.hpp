@@ -7,15 +7,17 @@
 class HumanA {
 
 private:
-/* Attributes */
+	/* Attributes */
 	std::string	_name;
 	Weapon&		_weapon;
 
 public:
-/* Functions */
+	/* Ctors/dtors */
 	HumanA( std::string name, Weapon& weapon );
 	~HumanA( void );
-	void	attack( void );
+	
+	/* Member functions */
+	void	attack( void ) const;
 
 };
 

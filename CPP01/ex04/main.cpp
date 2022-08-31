@@ -8,6 +8,9 @@ std::string	strReplace( std::string str, std::string toReplace, std::string repl
 	size_t			pos = 0;
 	size_t			posToReplace = str.find(toReplace, pos);
 
+	// Protection for empty args
+	if (replacement.empty() || toReplace.empty())
+		return str;
 
 	while ( posToReplace != str.npos ) {
 		oss << str.substr(pos, posToReplace - pos);
@@ -49,10 +52,16 @@ int	main( int argc, char **argv ) {
 	std::string		original = fileToStr( fileName );
 	std::string		replaced = strReplace( original, argv[2], argv[3] );
 
-	std::cout << "original string		: '"	<< original << "'\n";
-	std::cout << "string to replace	: '"		<< argv[2] << "'\n";
-	std::cout << "replacement		: '"		<< argv[3] << "'\n";
-	std::cout << "replaced string		: '"	<< replaced << "'\n";
+	if (original == replaced) {
+		std::cerr << "Error: string to replace : '"		<< argv[2]	<< "'\n"
+				  << "was not found in string  : "	<< original	<< std::endl;
+		return 1;
+	}
+
+	std::cout << "original string		: '"	<< original	<< "'\n"
+			  << "string to replace	: '"		<< argv[2]	<< "'\n"
+			  << "replacement		: '"		<< argv[3]	<< "'\n"
+			  << "replaced string		: '"	<< replaced	<< "'\n";
 
 	std::ofstream	ofs( fileName.append( ".replace" ) );
 	ofs << replaced;
