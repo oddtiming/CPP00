@@ -22,6 +22,7 @@ CFLAGS	= -Wall -Wextra -Werror -pedantic-errors -std=c++98 -O3
 RM_OBJS			=	rm -rf $(OBJ_DIR)
 RM_EXE			=	rm -f $(NAME)
 RM_REPLACEMENTS	=	rm -f *.replace
+RM_QUOTE		=	rm -f quote.txt
 
 COMPILE_EXE		=	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 COMPILE_EXE_OUT	=	$$($(COMPILE_EXE) 2>&1 | sed -e 's/error/\\\033[0;31merror\\\033[0m/g' -e 's/warning/\\\033[0;33mwarning\\\033[0m/g')
@@ -58,6 +59,7 @@ fclean:	clean
 	@$(RM_EXE)
 	@echo -e "$(RED)>>>>>>>> Deleting *.replace $(RESET_COL)"
 	@$(RM_REPLACEMENTS)
+	@$(RM_QUOTE)
 
 re:	fclean all
 
