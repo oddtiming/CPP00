@@ -10,7 +10,14 @@ class Character;
 
 class ICharacter {
 
+	private:
+		ICharacter( ICharacter const & src ) { (void)src; }
+		ICharacter &	operator=( ICharacter const & rhs ) { 
+			(void) rhs;
+			return *this; }
+
 	public:
+		ICharacter() { }
 		virtual ~ICharacter() { }
 		
 		virtual std::string const & getName() const = 0;
