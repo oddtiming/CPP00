@@ -9,7 +9,9 @@ Brain::Brain( ) {
 	return ;
 }
 
-Brain::Brain( Brain const & src ) {
+Brain::Brain( Brain const & src ) :
+	_ideas(src._ideas) 
+{
 	std::cout << __FUNCTION__ << " copy constructor called" << std::endl;
 
 	*this = src;
@@ -17,7 +19,7 @@ Brain::Brain( Brain const & src ) {
 
 Brain &	Brain::operator=( Brain const & rhs ) {
 	std::cout << "Brain assignment operator called, but does nothing" << std::endl;
-	(void) rhs;
+	this->_ideas = rhs._ideas;
 	return *this;
 }
 
@@ -37,7 +39,7 @@ std::string		Brain::getIdea( uint index ) const {
 
 
 
-std::string const Brain::_ideas[100] = { "jolly_problem","encouraging_negotiation","common_opportunity", "brainy_child",
+std::string Brain::_ideas[100] = { "jolly_problem","encouraging_negotiation","common_opportunity", "brainy_child",
 	"profuse_finding", "sleepy_writer","wholesale_tooth", "greasy_membership", "different_girl","whole_article","interesting_suggestion",
 	"lewd_buyer","past_ear", "quizzical_drawer", "condemned_department", "lumpy_reading","unusual_procedure", "unhappy_nature", "special_penalty",
 	"mundane_analysis", "sloppy_reality", "unwritten_director","sad_writing", "inquisitive_winner", "silky_resolution", "bored_engine",
