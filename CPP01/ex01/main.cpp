@@ -9,6 +9,10 @@ int	main( void ) {
 	int			N = 12;
 	Zombie		*horde = zombieHorde( N, "zombiePartyPerson" );
 
+	if (horde == nullptr) {
+		exit(EXIT_FAILURE);
+	}
+
 
 	std::cout << "\n\tOkay, did we get all " << N << " " << name << "s?" << "\n\n";
 	std::this_thread::sleep_for (std::chrono::seconds(1));

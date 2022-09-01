@@ -15,7 +15,7 @@ std::string	strReplace( std::string str, std::string toReplace, std::string repl
 	while ( posToReplace != str.npos ) {
 		oss << str.substr(pos, posToReplace - pos);
 		oss << replacement;
-		pos += posToReplace + toReplace.length();
+		pos = posToReplace + toReplace.length();
 		posToReplace = str.find(toReplace, pos);
 	}
 	oss << str.substr(pos, str.length() - pos);
