@@ -7,7 +7,7 @@
 # include <string>
 
 # define INVENTORY_MAX 4
-# define DROPPED_MAX 256
+# define DROPPED_MAX 4096
 
 class Character : virtual public ICharacter
 {

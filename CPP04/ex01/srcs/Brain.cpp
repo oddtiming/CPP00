@@ -6,40 +6,11 @@
 
 Brain::Brain( ) {
 	std::cout << __FUNCTION__ << " called" << std::endl;
-	return ;
-}
-
-Brain::Brain( Brain const & src ) :
-	_ideas(src._ideas) 
-{
-	std::cout << __FUNCTION__ << " copy constructor called" << std::endl;
-
-	*this = src;
-}
-
-Brain &	Brain::operator=( Brain const & rhs ) {
-	std::cout << "Brain assignment operator called, but does nothing" << std::endl;
-	this->_ideas = rhs._ideas;
-	return *this;
-}
-
-Brain::~Brain( ) {
-	std::cout << __FUNCTION__ << " called" << std::endl;
-}
-
-/*****************************************************************************/
-/*                             Getters/Setters                               */
-/*****************************************************************************/
-
-std::string		Brain::getIdea( uint index ) const {
-	
-	return this->_ideas[index % 100];
-}
 
 
 
-
-std::string Brain::_ideas[100] = { "jolly_problem","encouraging_negotiation","common_opportunity", "brainy_child",
+	// This is right about the most absurd shit I've ever coded, but 42 corrections are 42 corrections...
+	std::string		ideas2[100] = { "jolly_problem","encouraging_negotiation","common_opportunity", "brainy_child",
 	"profuse_finding", "sleepy_writer","wholesale_tooth", "greasy_membership", "different_girl","whole_article","interesting_suggestion",
 	"lewd_buyer","past_ear", "quizzical_drawer", "condemned_department", "lumpy_reading","unusual_procedure", "unhappy_nature", "special_penalty",
 	"mundane_analysis", "sloppy_reality", "unwritten_director","sad_writing", "inquisitive_winner", "silky_resolution", "bored_engine",
@@ -56,3 +27,40 @@ std::string Brain::_ideas[100] = { "jolly_problem","encouraging_negotiation","co
 	"miscreant_orange", "crazy_inspector", "future_department", "ill-informed_responsibility", "brawny_application", "puzzling_celebration", 
 	"quarrelsome_audience", "tricky_penalty", "wide_analyst", "keen_child", "aloof_psychology", "marvelous_reading", "wacky_office",
 	"aboriginal_disease", "uninterested_unit", "exclusive_courage", "permissible_thought", "rightful_mixture", "melodic_potato", "lying_finding" };
+
+	for (int i = 0; i < 100; i++) {
+		_ideas[i] = ideas2[i];
+	}
+
+	return ;
+}
+
+Brain::Brain( Brain const & src ) 
+{
+	std::cout << __FUNCTION__ << " copy constructor called" << std::endl;
+
+	for (int i = 0; i < 100; i++) {
+		_ideas[i] = src._ideas[i];
+	}
+}
+
+Brain &	Brain::operator=( Brain const & rhs ) {
+	std::cout << "Brain assignment operator called, but does nothing" << std::endl;
+	for (int i = 0; i < 100; i++) {
+		_ideas[i] = rhs._ideas[i];
+	}
+	return *this;
+}
+
+Brain::~Brain( ) {
+	std::cout << __FUNCTION__ << " called" << std::endl;
+}
+
+/*****************************************************************************/
+/*                             Getters/Setters                               */
+/*****************************************************************************/
+
+std::string	const &	Brain::getIdea( uint index ) const {
+	
+	return this->_ideas[index % 100];
+}

@@ -23,7 +23,7 @@ Dog &	Dog::operator=( Dog const & rhs ) {
 }
 
 Dog::~Dog( ) {
-	std::cout << "~Dog called" << std::endl;
+	std::cout << "~Dog destructor called" << std::endl;
 }
 
 /*****************************************************************************/

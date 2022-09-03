@@ -18,7 +18,7 @@ public:
 	
 	~Brain( );
 	
-	std::string	getIdea( uint index ) const;
+	std::string const &	getIdea( uint index ) const;
 
 };
 

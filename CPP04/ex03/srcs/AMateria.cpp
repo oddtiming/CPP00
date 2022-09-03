@@ -8,11 +8,10 @@ AMateria::AMateria( AMateria const & src ) {
 	*this = src;
 }
 
-AMateria::AMateria( std::string const & type ) :
-	_type( type ) { }
+AMateria::AMateria( std::string const & type ) : _type( type ) { }
 
 AMateria &	AMateria::operator=( AMateria const & rhs ) {
-	this->_type = rhs.getType();
+	this->_type = rhs._type;
 	return *this;
 }
 

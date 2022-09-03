@@ -24,7 +24,7 @@ Animal &	Animal::operator=( Animal const & rhs ) {
 }
 
 Animal::~Animal( ) {
-	std::cout << "~Animal called" << std::endl;
+	std::cout << "~Animal destructor called" << std::endl;
 }
 
 /*****************************************************************************/

@@ -8,7 +8,7 @@ class Animal {
 
 protected:
 /* Attributes */
-	std::string	_type;
+	std::string	_type;   
 
 public:
 /* Functions */

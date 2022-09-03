@@ -103,6 +103,15 @@ int main( ) {
 	dude->use( 2, *copy );
 	dude->use( 1, *copy );
 
+
+	/**
+	 * 		Uncomment following to test
+	 * 			what happens when nb dropped items is too high
+	 */
+	// for (int i = 0; i < DROPPED_MAX + 2; i++) {
+	// 	dude->equip( src->createMateria("ice") );
+	// }
+
 	delete src;
 	delete dude;
 	delete copy;

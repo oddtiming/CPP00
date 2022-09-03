@@ -19,6 +19,8 @@ Character::Character( ) :
 
 }
 
+
+
 Character::Character( std::string const & name ) :
 	_name( name ),
 	_nbItems( 0 ),
@@ -34,10 +36,14 @@ Character::Character( std::string const & name ) :
 
 }
 
+
+
 Character::Character( Character const & src ) {
 	std::cout << "Character copy constructor called by " << _name << std::endl;
 	*this = src;
 }
+
+
 
 Character::~Character( ) {
 		
@@ -46,9 +52,12 @@ Character::~Character( ) {
 
 	while (_nbDroppedItems)
 		delete _droppedItems[--_nbDroppedItems];
-
+	
 	std::cout << "~Character destructor called by " << _name << std::endl;
 }
+
+
+
 
 /*****************************************************************************/
 /*                           Assignment operator                             */
@@ -62,8 +71,8 @@ Character &	Character::operator=( Character const & rhs ) {
 
 	this->_name = rhs.getName();
 
-	// I settled for cloning all the source items,
-	// as a shallow copy causes issues with later deletion
+	/*		I settled for cloning all the source items,			*
+	 *		as a shallow copy causes issues with later deletion	*/
 
 	// Update inventory
 	for (uint i = 0; i < INVENTORY_MAX; i++) {
@@ -72,6 +81,7 @@ Character &	Character::operator=( Character const & rhs ) {
 	}
 
 	this->_nbItems = rhs._nbItems;
+
 
 	// Update droppedItems
 	for (uint i = 0; i < rhs._nbDroppedItems; i++) {
@@ -85,6 +95,8 @@ Character &	Character::operator=( Character const & rhs ) {
 }
 
 
+
+
 /*****************************************************************************/
 /*                              Getters/Setters                              */
 /*****************************************************************************/
@@ -92,6 +104,8 @@ Character &	Character::operator=( Character const & rhs ) {
 std::string const &	 Character::getName( ) const {
 	return this->_name;
 }
+
+
 
 /*****************************************************************************/
 /*                              Member functions                             */
@@ -108,6 +122,8 @@ void Character::use( int idx, ICharacter & target) {
 	
 	this->_inventory[idx]->use( target );
 }
+
+
 
 void Character::equip( AMateria * newMateria) {
 
@@ -143,6 +159,8 @@ void Character::equip( AMateria * newMateria) {
 
 }	
 
+
+
 void Character::unequip( int idx ) {
 
 	static int destroyIndex = 0;
@@ -167,7 +185,7 @@ void Character::unequip( int idx ) {
 	if ( _nbDroppedItems >= DROPPED_MAX ) {
 		
 		std::cout << _name << " dropped too many items..." << "\n"
-			<< "Some " << _droppedItems[destroyIndex]
+			<< "Some " << *_droppedItems[destroyIndex]
 			<< " randomly vanishes into thin air!" << "\n" << std::endl;
 
 		delete _droppedItems[destroyIndex];
@@ -185,7 +203,9 @@ void Character::unequip( int idx ) {
 
 	_nbItems--;
 	
-}	
+}
+
+
 
 /*****************************************************************************/
 /*                            Non-member functions                           */

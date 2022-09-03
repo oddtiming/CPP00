@@ -17,7 +17,19 @@ CFILES	=	AMateria.cpp \
 			MateriaSource.cpp \
 			main.cpp
 
-INC				:= ./includes
+
+INCFILES	=	AMateria.hpp \
+				Character.hpp \
+				Cure.hpp \
+				Fire.hpp \
+				ICharacter.hpp \
+				IMateriaSource.hpp \
+				Ice.hpp \
+				MateriaSource.hpp \
+				Water.hpp
+
+INC_DIR			= ./includes
+INCS			= $(addprefix $(INC_DIR)/, $(INCFILES))
 
 SRC_DIR			= ./srcs
 SRCS			= $(addprefix $(SRC_DIR)/, $(CFILES))
@@ -25,8 +37,8 @@ SRCS			= $(addprefix $(SRC_DIR)/, $(CFILES))
 OBJ_DIR			= ./obj
 OBJS			= $(addprefix $(OBJ_DIR)/, $(CFILES:.cpp=.o))
 
-CC		= clang++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -fno-limit-debug-info -g -I$(INC)
+CC		= c++
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR) -g
 
 RM_OBJS			=	rm -rf $(OBJ_DIR)
 RM_EXE			=	rm -f $(NAME)
@@ -37,8 +49,8 @@ COMPILE_EXE_OUT	=	$$($(COMPILE_EXE) 2>&1 | sed -e 's/error/\\\033[0;31merror\\\0
 COMPILE_C		=	$(CC) $(CFLAGS) -o $@ -c $<
 COMPILE_C_OUT	=	$$($(COMPILE_C) 2>&1 | sed -e 's/error/\\\033[0;31merror\\\033[0m/g' -e 's/warning/\\\033[0;33mwarning\\\033[0m/g')
 
-$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.cpp
-	@printf "$(CYAN)%-30s-->%30s $(RESET_COL)\n$(COMPILE_C_OUT)" $^ $@
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.cpp $(INCS)
+	@printf "$(CYAN)%-30s-->%30s $(RESET_COL)\n$(COMPILE_C_OUT)" $< $@
 
 all: $(NAME)
 	@if [ -e $(NAME) ]; then \

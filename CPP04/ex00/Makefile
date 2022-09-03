@@ -14,7 +14,13 @@ CFILES	=	Animal.cpp \
 			main.cpp \
 			WrongAnimal.cpp \
 			WrongCat.cpp
-
+	
+INCS	=	Animal.hpp \
+			Cat.hpp \
+			Dog.hpp \
+			WrongAnimal.hpp \
+			WrongCat.hpp
+			
 OBJ_DIR	= obj
 OBJS	= $(addprefix $(OBJ_DIR)/, $(CFILES:.cpp=.o))
 
@@ -30,8 +36,8 @@ COMPILE_EXE_OUT	=	$$($(COMPILE_EXE) 2>&1 | sed -e 's/error/\\\033[0;31merror\\\0
 COMPILE_C		=	$(CC) $(CFLAGS) -o $@ -c $<
 COMPILE_C_OUT	=	$$($(COMPILE_C) 2>&1 | sed -e 's/error/\\\033[0;31merror\\\033[0m/g' -e 's/warning/\\\033[0;33mwarning\\\033[0m/g')
 
-$(OBJ_DIR)/%.o:	%.cpp
-	@printf "$(CYAN)%-30s-->%30s $(RESET_COL)\n$(COMPILE_C_OUT)" $^ $@
+$(OBJ_DIR)/%.o:	%.cpp $(INCS)
+	@printf "$(CYAN)%-30s-->%30s $(RESET_COL)\n$(COMPILE_C_OUT)" $< $@
 
 all: $(NAME)
 	@if [ -e $(NAME) ]; then \

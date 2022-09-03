@@ -5,7 +5,7 @@
 /*****************************************************************************/
 
 Cat::Cat( ) : Animal( "Cat" ) {
-	std::cout << "Cat called" << std::endl;
+	std::cout << "Cat constructor called" << std::endl;
 	return ;
 }
 
@@ -23,7 +23,7 @@ Cat &	Cat::operator=( Cat const & rhs ) {
 }
 
 Cat::~Cat( ) {
-	std::cout << "~Cat called" << std::endl;
+	std::cout << "~Cat destructor called" << std::endl;
 }
 
 /*****************************************************************************/
