@@ -31,3 +31,8 @@ obj/*
 *.exe
 *.out
 *.app
+
+
+# Misc
+.DS_Store
+.vscode
