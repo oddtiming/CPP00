@@ -19,7 +19,7 @@ void	HumanB::setWeapon( Weapon& weapon ) {
 
 	std::cout << "\n\t\"" 
 			  << _name 
-			  << "\" picks up the  \""
+			  << "\" picks up the \""
 			  << weapon.getType() 
 			  << "\"." << std::endl;
 

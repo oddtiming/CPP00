@@ -24,7 +24,7 @@ void	Harl::_error( void ) {
 
 void	Harl::_dispatchMsg( int i ) {
 	
-	void	(Harl::*fctsArr[4])(void) = {
+	static void	(Harl::*fctsArr[4])(void) = {
 		&Harl::_debug,
 		&Harl::_info,
 		&Harl::_warning,
