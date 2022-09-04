@@ -2,19 +2,19 @@
 
 int	main( void ) {
 
-	std::string		string( "HI THIS IS BRAIN!" );
-	std::string*	stringPtr = &string;
-	std::string&	stringRef = string;
+	std::string		string( "HI THIS IS BRAIN" );
+	std::string*	stringPTR = &string;
+	std::string&	stringREF = string;
 
 
 	// I have no idea why they are the same 
 	std::cout << "&string:  	" << &string << "\n";
-	std::cout << "&stringPtr:	" << &stringPtr << "\n";
-	std::cout << "&stringRef:	" << &stringRef << "\n\n";
+	std::cout << "&stringPTR:	" << &stringPTR << "\n";
+	std::cout << "&stringREF:	" << &stringREF << "\n\n";
 
 	std::cout << "string:		" << string << "\n";
-	std::cout << "*stringPtr:	" << *stringPtr << "\n";
-	std::cout << "stringRef:	" << stringRef << std::endl;
+	std::cout << "*stringPTR:	" << *stringPTR << "\n";
+	std::cout << "stringREF:	" << stringREF << std::endl;
 
 	return 0;
 }

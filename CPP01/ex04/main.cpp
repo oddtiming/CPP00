@@ -3,14 +3,14 @@
 #include <sstream>		// std::ostringstream, std::endl
 #include <string>		// find(), substr(), length()
 
-std::string	strReplace( std::string str, std::string toReplace, std::string replacement  ) {
+std::string	strReplace( std::string str, std::string toReplace, std::string replacement ) {
 	std::ostringstream	oss;
 	size_t			pos = 0;
 	size_t			posToReplace = str.find(toReplace, pos);
 
 	// Protection for empty args
-	if (replacement.empty() || toReplace.empty())
-		return str;
+	if ( toReplace.empty() || posToReplace == str.npos)
+		return std::string();
 
 	while ( posToReplace != str.npos ) {
 		oss << str.substr(pos, posToReplace - pos);
@@ -52,7 +52,7 @@ int	main( int argc, char **argv ) {
 	std::string		original = fileToStr( fileName );
 	std::string		replaced = strReplace( original, argv[2], argv[3] );
 
-	if (original == replaced) {
+	if ( replaced.empty() ) {
 		std::cerr << "Error: string to replace : '"		<< argv[2]	<< "'\n"
 				  << "was not found in string  : "	<< original	<< std::endl;
 		return 1;
