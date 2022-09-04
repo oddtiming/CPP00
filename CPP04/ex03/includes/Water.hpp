@@ -7,12 +7,13 @@
 
 class Water : public AMateria
 {
-
-	public:
-
-		Water( );
+	private:
+		/* Since it apparently doesn't make sense to copy the type..? */
 		Water( Water const & src );
 		Water &	operator=( Water const & rhs );
+
+	public:
+		Water( );
 
 		~Water( );
 

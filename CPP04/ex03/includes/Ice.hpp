@@ -7,12 +7,13 @@
 
 class Ice : public AMateria
 {
-
-	public:
-
-		Ice( );
+	private:
+		/* Since it apparently doesn't make sense to copy the type..? */
 		Ice( Ice const & src );
 		Ice &	operator=( Ice const & rhs );
+
+	public:
+		Ice( );
 
 		~Ice( );
 

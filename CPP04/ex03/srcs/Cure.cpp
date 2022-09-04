@@ -5,12 +5,14 @@ Cure::Cure( ) : AMateria( "cure" ) {
 }
 
 Cure::Cure( Cure const & src ) {
-	std::cout << "Cure copy constructor called  " << std::endl;
-	*this = src;
+	(void) src;
+	// std::cout << "Cure copy constructor called  " << std::endl;
+	// *this = src;
 }
 
 Cure &	Cure::operator=( Cure const & rhs ) {
-	this->AMateria::operator=( rhs );
+	(void) rhs;
+	// this->AMateria::operator=( rhs );
 	return *this;
 }
 
@@ -20,15 +22,15 @@ Cure::~Cure( ) {
 
 void	Cure::use( ICharacter& target ) {
 	std::cout << "\n* " 
-		<< "heals " << target << "'s wounds"
-		<< " *" << std::endl;
+			  << "heals " << target << "'s wounds"
+			  << " *" << std::endl;
 }
 
 AMateria* Cure::clone() const {
 	
 	Cure *	clone = new Cure();
 	
-	*clone = *this;
+	// *clone = *this;
 
 	return clone;
 }

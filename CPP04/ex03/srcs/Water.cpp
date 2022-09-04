@@ -5,12 +5,14 @@ Water::Water( ) : AMateria( "water" ) {
 }
 
 Water::Water( Water const & src ) {
-	std::cout << "Water copy constructor called  " << std::endl;
-	*this = src;
+	(void) src;
+	// std::cout << "Water copy constructor called  " << std::endl;
+	// *this = src;
 }
 
 Water &	Water::operator=( Water const & rhs ) {
-	this->AMateria::operator=( rhs );
+	(void) rhs;
+	// this->AMateria::operator=( rhs );
 	return *this;
 }
 
@@ -27,7 +29,7 @@ AMateria* Water::clone() const {
 	
 	Water *	clone = new Water();
 	
-	*clone = *this;
+	// *clone = *this;
 
 	return clone;
 }

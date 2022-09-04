@@ -3,6 +3,7 @@
 
 # include "ICharacter.hpp"
 # include "MateriaSource.hpp"
+# include "StorageObject.hpp"
 # include <iostream>
 # include <string>
 
@@ -11,13 +12,12 @@
 
 class Character : virtual public ICharacter
 {
-	
 	private:
 		std::string		_name;
-		AMateria *		_inventory[INVENTORY_MAX];
-		AMateria *		_droppedItems[DROPPED_MAX];
 		uint			_nbItems;
-		uint			_nbDroppedItems;
+		AMateria *		_inventory[INVENTORY_MAX];
+		uint			_nbStorages;
+		StorageObject*	_droppedItems;
 
 	public:
 		// Constructors
@@ -33,6 +33,9 @@ class Character : virtual public ICharacter
 
 		std::string const & getName( ) const;
 		
+
+		// Apparently child implementations need not be virtual
+		//https://docs.microsoft.com/en-us/cpp/cpp/virtual-functions?view=msvc-170
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);

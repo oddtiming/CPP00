@@ -5,12 +5,14 @@ Fire::Fire( ) : AMateria( "fire" ) {
 }
 
 Fire::Fire( Fire const & src ) {
-	std::cout << "Fire copy constructor called  " << std::endl;
-	*this = src;
+	(void) src;
+	// std::cout << "Fire copy constructor called  " << std::endl;
+	// *this = src;
 }
 
 Fire &	Fire::operator=( Fire const & rhs ) {
-	this->AMateria::operator=( rhs );
+	(void) rhs;
+	// this->AMateria::operator=( rhs );
 	return *this;
 }
 
@@ -19,16 +21,19 @@ Fire::~Fire( ) {
 }
 
 void	Fire::use( ICharacter& target ) {
-	std::cout << "\n* " 
-		<< "burns " << target << " with the force of a thousand suns!"
-		<< " *" << std::endl;
+	std::cout << "\n* "
+			  << "burns "
+			  << target
+			  << " with the force of a thousand suns!"
+			  << " *"
+			  << std::endl;
 }
 
 AMateria* Fire::clone() const {
 	
 	Fire *	clone = new Fire();
 	
-	*clone = *this;
+	// *clone = *this;
 
 	return clone;
 }

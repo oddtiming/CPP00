@@ -1,17 +1,19 @@
 #ifndef CURE_HPP_
 # define CURE_HPP_
 
-#include "AMateria.hpp"
-#include <iostream>
-#include <string>
+# include "AMateria.hpp"
+# include <iostream>
+# include <string>
 
 class Cure : public AMateria
 {
-	public:
-
-		Cure( );
+	private:
+		/* Since it apparently doesn't make sense to copy the type..? */
 		Cure( Cure const & src );
 		Cure &	operator=( Cure const & rhs );
+
+	public:
+		Cure( );
 
 		~Cure( );
 

@@ -13,8 +13,9 @@ CFILES	=	AMateria.cpp \
 			Cure.cpp \
 			Fire.cpp \
 			Ice.cpp \
-			Water.cpp \
+			StorageObject.cpp \
 			MateriaSource.cpp \
+			Water.cpp \
 			main.cpp
 
 
@@ -26,6 +27,7 @@ INCFILES	=	AMateria.hpp \
 				IMateriaSource.hpp \
 				Ice.hpp \
 				MateriaSource.hpp \
+				StorageObject.hpp \
 				Water.hpp
 
 INC_DIR			= ./includes
