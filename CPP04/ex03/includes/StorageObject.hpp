@@ -20,6 +20,7 @@ class StorageObject {
 		StorageObject &	operator=( StorageObject const & rhs );
 
 		bool	addMateria( AMateria * newM );
+		void	deleteStorage( );
 
 };
 

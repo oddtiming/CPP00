@@ -29,16 +29,16 @@ class Character : virtual public ICharacter
 		Character &	operator=( Character const & rhs );
 
 		// Destructor
-		~Character( );
+		virtual ~Character( );
 
 		std::string const & getName( ) const;
 		
 
 		// Apparently child implementations need not be virtual
 		//https://docs.microsoft.com/en-us/cpp/cpp/virtual-functions?view=msvc-170
-		void equip(AMateria* m);
-		void unequip(int idx);
-		void use(int idx, ICharacter& target);
+		virtual void equip(AMateria* m);
+		virtual void unequip(int idx);
+		virtual void use(int idx, ICharacter& target);
 };
 
 std::ostream & operator<<( std::ostream & o, ICharacter const & s );

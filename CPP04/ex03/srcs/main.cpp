@@ -8,37 +8,6 @@
 #include "AMateria.hpp"
 #include "StorageObject.hpp"
 
-// int main( ) {
-
-// 	IMateriaSource* src = new MateriaSource();
-// 	src->learnMateria(new Ice());
-// 	src->learnMateria(new Cure());
-// 	src->learnMateria(new Fire());
-// 	src->learnMateria(new Water());
-// 	src->learnMateria(new Water());
-
-// 	ICharacter* me = new Character("me");
-//     AMateria* tmp;
-
-//     tmp = src->createMateria("ice");
-//     me->equip(tmp);
-//     tmp = src->createMateria("cure");
-//     me->equip(tmp);
-//     tmp = src->createMateria("fire");
-//     me->equip(tmp);
-//     tmp = src->createMateria("water");
-//     me->equip(tmp);
-
-// 	me->unequip(0);
-// 	me->unequip(1);
-
-
-// 	delete me;
-// 	delete src;
-
-// 	return 0;
-// }
-
 int main( ) {
 
 	/**
@@ -65,8 +34,8 @@ int main( ) {
 	 * 				- NULL argument
 	 * 
 	 */
-	ICharacter* me = new Character("me");
-    AMateria* tmp;
+	ICharacter*	me = new Character("me");
+    AMateria*	tmp;
 
     tmp = src->createMateria("ice");
     me->equip(tmp);
@@ -137,15 +106,6 @@ int main( ) {
 	dude->use( 2, *copy );
 	dude->use( 1, *copy );
 
-
-	/**
-	 * 		Uncomment following to test
-	 * 			what happens when nb dropped items is too high
-	 */
-	for (int i = 0; i < 10; i++) {
-		dude->unequip( 0 );
-		dude->equip( src->createMateria("ice") );
-	}
 
 	delete src;
 	delete dude;
