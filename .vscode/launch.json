@@ -9,7 +9,7 @@
 			"request": "launch",
 			"name": "Debug",
 			"program": "${workspaceFolder}/CPP06/ex00/convert",
-			"args": ["a"],
+			"args": ["a     123"],
 			"cwd": "${workspaceFolder}"
 		}
 	]

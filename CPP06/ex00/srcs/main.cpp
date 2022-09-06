@@ -17,38 +17,40 @@ int	main( int argc, char **argv )
 	int			varType = 0;	// see e_types for available types
 	long double	ldbl = 0;
 
+	// Protect for no/empty argument
 	if ( argc < 2 || !argv[1][0] ) {
 		cerr << "Error : input a number to be converted" << endl;
 		exit ( EXIT_FAILURE );
 	}
-	else if ( argc > 2 || !argv[1][0] ) {
-		cerr << "Warning: convert only takes a single argument" << endl;
-		exit ( EXIT_FAILURE );
+	// Issue a warning if more than one arg is passed
+	if ( argc > 2 ) {
+		cerr << "Warning: only converts the first argument" << endl;
 	}
 
-	str = getFirstWord(argv[1]);
-
-	if (str.length() == 1) {
-		ldbl = static_cast< double >( str[0] );
+	// To account for char literals
+	if (!argv[1][1]) {
+		ldbl = static_cast< double >( argv[1][0] );
 		str = std::to_string(ldbl);
 	}
 	else {
-		try {
-			ldbl = stold( str, &i );
-			varType = getVarType( str, i, ldbl);
-		}
-		catch (std::exception & e) {
-			cerr << e.what() << ": Please enter a number between " 
-				<< std::numeric_limits< long double >::min() << " and "
-				<< std::numeric_limits< long double >::max() << endl;
-			exit (1);
+		str = getWord(argv[1]);
+		if ( getWord(&argv[1][str.length()]).empty() == false ) {
+			cerr << "Warning: only converts the first argument" << endl;
 		}
 	}
-	// catch (std::out_of_range & e)
-	// catch (NotAnIntException e) {
-	// 	cerr << e.what() << endl;
-	// 	exit (1);
-	// }
+
+
+	try {
+		ldbl = stold( str, &i );
+		varType = getVarType( str, i, ldbl);
+	}
+	catch (std::exception & e) {
+		cerr << e.what() << ": Please enter a number between " 
+			<< std::numeric_limits< long double >::min() << " and "
+			<< std::numeric_limits< long double >::max() << endl;
+		exit (1);
+	}
+
 
 	varType == T_NB ?
 		convertNb( str, ldbl ) :	//true

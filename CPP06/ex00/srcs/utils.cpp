@@ -19,22 +19,23 @@ int		getVarType( string const & str, size_t const & i, long double const & ldbl 
 	 */
 
 	// Check if more than a single char is left in the string
-	if ( str.length() > i + 1)	
+	if ( ( str.length() > i + 1) 
+		|| ( str.length() == i + 1 && str.length() > 1 && str.at(i) != 'f' ) ) {
+
 		throw NotAnIntException();
+	}
 
 	if ( isnan( ldbl ) )
 		return T_NAN;
 	else if ( isinf( ldbl ) )
 		return T_INF;
 
-	if ( str.length() == i + 1 && str.length() > 1 && str.at(i) != 'f' )
-		throw NotAnIntException();
 
 	return T_NB;
 
 }
 
-string	getFirstWord(char * const str) {
+string	getWord(char * const str) {
 
 	stringstream	ss(str);
 	string			firstWord;

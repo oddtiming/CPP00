@@ -18,7 +18,6 @@ void	convertNb( string &str, long double const & ldbl ) {
 		char c = static_cast< char >( ldbl );
 		string ctos;					// convert to str to use the ternary
 		ctos.append(1, c);
-		
 		cout << ( isprint(c) ? "'" + ctos + "'" : "Not Displayable" ) << endl;
 
 	} catch (std::exception e) {
@@ -51,7 +50,7 @@ void	convertNb( string &str, long double const & ldbl ) {
 
 	cout << "double\t:";
 	try {
-		cout << std::setprecision(str.length()) 
+		cout << std::setprecision( (str.length() > 20 ? 20 : str.length() ) 
 			<< stod( str )
 			<< ( ldbl - static_cast< int >( ldbl ) ? "" : ".0" ) << endl;
 		

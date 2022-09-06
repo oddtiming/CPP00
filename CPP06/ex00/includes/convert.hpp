@@ -5,8 +5,7 @@ using std::string;
 enum e_types {
 	T_NB,
 	T_INF,
-	T_NAN,
-	T_CHAR
+	T_NAN
 };
 
 class NotAnIntException : public std::exception {
@@ -18,7 +17,7 @@ class NotAnIntException : public std::exception {
 // utils.cpp
 string	strToLower(string str);
 int		getVarType( string const & str, size_t const & i, long double const & d ) ;
-string	getFirstWord(char * const str);
+string	getWord(char * const str);
 
 // print.cpp
 void	convertNonNb( int const & varType );
