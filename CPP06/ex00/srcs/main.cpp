@@ -17,26 +17,27 @@ int	main( int argc, char **argv )
 	int			varType = 0;	// see e_types for available types
 	long double	ldbl = 0;
 
-	// Protect for no/empty argument
 	if ( argc < 2 || !argv[1][0] ) {
 		cerr << "Error : input a number to be converted" << endl;
 		exit ( EXIT_FAILURE );
 	}
-	// Issue a warning if more than one arg is passed
-	if ( argc > 2 ) {
+
+	str = getWord(argv[1]);
+	if (str.empty() && argv[1])
+
+	if ( argc > 2 || getWord(&argv[1][str.length()]).empty() == false ) {
 		cerr << "Warning: only converts the first argument" << endl;
 	}
 
+
 	// To account for char literals
-	if (!argv[1][1]) {
-		ldbl = static_cast< double >( argv[1][0] );
-		str = std::to_string(ldbl);
+	if (str.length() == 1) {
+		str = std::to_string( static_cast<int>( str.at(0) ) );
 	}
-	else {
-		str = getWord(argv[1]);
-		if ( getWord(&argv[1][str.length()]).empty() == false ) {
-			cerr << "Warning: only converts the first argument" << endl;
-		}
+	
+	// To account for single whitespace as char literal
+	else if ( str.empty() && argv[1][0] && !argv[1][1] ) {
+		str = std::to_string( static_cast<int>( argv[1][0] ) );
 	}
 
 

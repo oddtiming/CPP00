@@ -50,7 +50,7 @@ void	convertNb( string &str, long double const & ldbl ) {
 
 	cout << "double\t:";
 	try {
-		cout << std::setprecision( (str.length() > 20 ? 20 : str.length() ) 
+		cout << std::setprecision( (str.length() > 20 ? 20 : str.length() ) )
 			<< stod( str )
 			<< ( ldbl - static_cast< int >( ldbl ) ? "" : ".0" ) << endl;
 		

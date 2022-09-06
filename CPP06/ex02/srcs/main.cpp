@@ -8,7 +8,7 @@ int	main( )
 {
 	Base *	ptr;
 
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 10; i++) {
 		ptr = generate();
 		identify(ptr);
 		identify(*ptr);
@@ -17,4 +17,3 @@ int	main( )
 
 	return 0;
 }
-
