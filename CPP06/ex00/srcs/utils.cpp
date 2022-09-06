@@ -13,6 +13,11 @@ using std::stringstream;
 // Returns the var type (from e_type) string belongs to
 int		getVarType( string const & str, size_t const & i, long double const & ldbl ) {
 	
+	/**
+	 * NOTE: need to also convet char litterals
+	 * 
+	 */
+
 	// Check if more than a single char is left in the string
 	if ( str.length() > i + 1)	
 		throw NotAnIntException();
