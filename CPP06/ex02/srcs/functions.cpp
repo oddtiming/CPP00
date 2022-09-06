@@ -17,10 +17,13 @@ Base *	generate(void) {
 
 	switch ( rand() % 3 ) {
 		case 0:
+			std::cout << "* Generated class A *" << std::endl;
 			return new A();
 		case 1:
+			std::cout << "* Generated class B *" << std::endl;
 			return new B();
 		case 2:
+			std::cout << "* Generated class C *" << std::endl;
 			return new C();
 		default:
 			return nullptr;

@@ -8,8 +8,8 @@
 			"type": "lldb",
 			"request": "launch",
 			"name": "Debug",
-			"program": "${workspaceFolder}/CPP08/ex01/span",
-			"args": ["99999"],
+			"program": "${workspaceFolder}/CPP06/ex00/convert",
+			"args": ["a"],
 			"cwd": "${workspaceFolder}"
 		}
 	]
