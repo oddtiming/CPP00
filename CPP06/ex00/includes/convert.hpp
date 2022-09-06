@@ -5,7 +5,8 @@ using std::string;
 enum e_types {
 	T_NB,
 	T_INF,
-	T_NAN
+	T_NAN,
+	T_CHAR
 };
 
 class NotAnIntException : public std::exception {

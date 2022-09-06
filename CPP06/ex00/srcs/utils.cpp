@@ -27,7 +27,7 @@ int		getVarType( string const & str, size_t const & i, long double const & ldbl 
 	else if ( isinf( ldbl ) )
 		return T_INF;
 
-	if ( str.length() == i + 1 && str.at(i) != 'f' )
+	if ( str.length() == i + 1 && str.length() > 1 && str.at(i) != 'f' )
 		throw NotAnIntException();
 
 	return T_NB;

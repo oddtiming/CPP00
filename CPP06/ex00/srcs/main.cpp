@@ -28,15 +28,21 @@ int	main( int argc, char **argv )
 
 	str = getFirstWord(argv[1]);
 
-	try {
-		ldbl = stold( str, &i );
-		varType = getVarType( str, i, ldbl);
+	if (str.length() == 1) {
+		ldbl = static_cast< double >( str[0] );
+		str = std::to_string(ldbl);
 	}
-	catch (std::exception & e) {
-		cerr << e.what() << ": Please enter a number between " 
-			<< std::numeric_limits< long double >::min() << " and "
-			<< std::numeric_limits< long double >::max() << endl;
-		exit (1);
+	else {
+		try {
+			ldbl = stold( str, &i );
+			varType = getVarType( str, i, ldbl);
+		}
+		catch (std::exception & e) {
+			cerr << e.what() << ": Please enter a number between " 
+				<< std::numeric_limits< long double >::min() << " and "
+				<< std::numeric_limits< long double >::max() << endl;
+			exit (1);
+		}
 	}
 	// catch (std::out_of_range & e)
 	// catch (NotAnIntException e) {

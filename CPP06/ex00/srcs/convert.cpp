@@ -31,6 +31,9 @@ void	convertNb( string &str, long double const & ldbl ) {
 		cout << static_cast< int >(ldbl) << endl; 
 	} catch (std::out_of_range & e) {
 		cout << (ldbl < 0 ? "negative" : "positive") << " overflow" << endl; }
+	catch (std::exception & e) {
+		std::cerr << e.what() << std::endl;
+	}
 
 
 	cout << "float\t:";
@@ -41,6 +44,9 @@ void	convertNb( string &str, long double const & ldbl ) {
 		
 	} catch (std::out_of_range & e) {
 		cout << (ldbl < 0 ? "negative" : "positive") << " overflow" << endl; }
+	catch (std::exception & e) {
+		std::cerr << e.what() << std::endl;
+	}
 
 
 	cout << "double\t:";
@@ -51,6 +57,9 @@ void	convertNb( string &str, long double const & ldbl ) {
 		
 	} catch (std::out_of_range & e) {
 		cout << (ldbl < 0 ? "negative" : "positive") << " overflow" << endl; }
+	catch (std::exception & e) {
+		std::cerr << e.what() << std::endl;
+	}
 
 }
 

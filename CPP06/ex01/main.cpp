@@ -27,7 +27,7 @@ int main(void)
 	cout.copyfmt(iosCopy);
 	cout << "ptr->val: " << ptr->val << endl;
 
-	ptr->val = 5;
+	ptr->val = 42;
 	cout << "assigning 42 to struct member `val'" << endl;
 	cout.copyfmt(iosCopy);
 	cout << "ptr->val: " << ptr->val << endl;
