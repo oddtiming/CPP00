@@ -50,19 +50,19 @@ int	main( ) {
 	}
 
 
-	// std::cout << "\n\n\t *** PART 2 *** \n" << std::endl;
+	std::cout << "\n\n\t *** PART 2 *** \n" << std::endl;
 
-	// MutantStack<int> mstack2;
+	// MutantStack<int> mstack2 = mstack;
+	MutantStack<int> mstack2;
+	mstack2 = mstack;
 
-	// mstack2 = mstack;
+	it = mstack2.begin();
+	ite = mstack2.end();
 
-	// it = mstack2.begin();
-	// ite = mstack2.end();
-
-	// while (it != ite) {
-	//     std::cout << *it << std::endl;
-	// 	++it;
-	// }
+	while (it != ite) {
+	    std::cout << *it << std::endl;
+		++it;
+	}
 
 	std::stack<int> s(mstack);
 	return 0;

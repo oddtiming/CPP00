@@ -10,20 +10,21 @@ template<typename T, typename Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container> {
 
 private:
-	MutantStack( MutantStack const & src ) { return std::stack<T, Container>(src); }
 public:
 	/* Ctors/dtor */
 	MutantStack( ) { }
-	// MutantStack( std::stack< T, Container > s) : 
-	// 	std::stack<T, Container>( s ) {  }
+	MutantStack( std::stack< T, Container > s) : 
+		std::stack<T, Container>( s ) {  }
+	MutantStack( MutantStack const & src ) :
+		std::stack<T, Container>( src.c ) { }
 	~MutantStack( ) { }
 
 	/* Assignment operators */
-	// MutantStack &	operator=( MutantStack const & rhs ) { 
-	// 	*this = MutantStack(std::stack<T, Container>(rhs));
+	MutantStack &	operator=( MutantStack const & rhs ) { 
+		this->c = rhs.c;
 		
-	// 	return this->std::stack< T, Container >::operator=( rhs );
-	// }
+		return *this;
+	}
 
 	using std::stack<T, Container>::c;
 
