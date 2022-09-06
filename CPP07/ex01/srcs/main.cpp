@@ -37,7 +37,7 @@ void	flipBool( bool & b ) {
 
 int main( void ) {
 
-	int		a[3] = { 2, 3, -43 };
+	int		a[3] = { 0, 3, -43 };
 	
 	cout << "\tint		a[3]" << endl;
 	cout << a[0] << endl;
@@ -96,9 +96,9 @@ int main( void ) {
 
 
 	string	s[3] = {
-		"this is b lowercase string",
+		"this is a lowercase string",
 		"THIS IS AN UPPERCASE STRING",
-		"ThiS Is b MixED StRinG"
+		"ThiS Is a MixED StRinG"
 	};
 
 	cout << "\tstring	s[3]" << endl;
@@ -119,8 +119,6 @@ int main( void ) {
 	cout << s[0] << endl;
 	cout << s[1] << endl;
 	cout << s[2] << endl;
-
-
 
 	return 0;
 }

@@ -14,17 +14,21 @@ void	flipBool( bool & b ) {
 int	main( ) {
 
 	Array< int > 				a( 10 );
+	Array< int > 				a1;
+	int	*						a2 = new int();
 	Array< float > 				b( 10 );
 	Array< string > 			c( 10 );
 	Array< bool > 				d( 10 );
 	Array< Vertex< int > >		e( 10 );
 	
 
-	cout << a << endl;
-	cout << b << endl;
-	cout << c << endl;
-	cout << d << endl;
-	cout << e << endl;
+	cout << "Array< int > 				a( 10 ) \n"	<< a << endl;
+	cout << "Array< int > 				a1 \n"		<< a1 << endl;
+	cout << "int 			a2 \n"		<< *a2 << endl;
+	cout << "Array< float > 			b( 10 ) \n"	<< b << endl;
+	cout << "Array< string > 			c( 10 ) \n"	<< c << endl;
+	cout << "Array< bool > 				d( 10 ) \n"	<< d << endl;
+	cout << "Array< Vertex< int > >		e( 10 ) \n"	<< e << endl;
 
 	::iter( d.getData(), 10, flipBool);
 

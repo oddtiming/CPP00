@@ -9,6 +9,12 @@ template< typename T >
 class Array {
 
 public:
+
+	/* Constructors/destructors */
+	Array<T>( ) : _n(1), _data(new T()) {
+			std::cout << "Generic template<T> called w " << _data << std::endl;
+	}
+
 	Array<T>( uint n ) 
 		: _n(n), _data( new T[n] ) {
 			std::cout << "Generic template<T> called w " << _n << std::endl;
@@ -32,7 +38,13 @@ public:
 			}
 	}
 
-	// Copy assignment operator
+	~Array<T>( ) { 
+		std::cout << "~Array called" << std::endl;
+		delete [] _data;
+	}
+
+
+	/* Copy assignment operator */
 	Array const & operator=( Array const & rhs ) {
 		this->~Array();
 		std::cout << "template<T> copy assignment operator called" << std::endl;
@@ -44,13 +56,7 @@ public:
 	}
 
 
-	~Array<T>( ) { 
-		std::cout << "~Array called" << std::endl;
-		delete [] _data;
-	}
-	Array<T>( ) : _n(0), _data(nullptr) {
-			std::cout << "Generic template<T> called w " << _data << std::endl;
-	}
+	/* Getters/Setters */
 
 	T const *		getData( ) const { return this->_data; }
 	T *				getData( ) { return this->_data; }
@@ -63,10 +69,9 @@ public:
 	}
 
 
-	T const &operator[]( size_t n ) const { 
-		return this->getAt(n); }
-	T const &operator*( Array const & lhs ) const { 
-		return lhs.getData; }
+	/* Operator overloads */
+	T const &operator[]( size_t n )			const	{ return this->getAt(n); }
+	T const &operator*( Array const & lhs )	const	{ return lhs.getData; }
 
 private:
 	uint	_n;
