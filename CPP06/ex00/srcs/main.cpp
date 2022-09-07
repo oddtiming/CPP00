@@ -23,7 +23,6 @@ int	main( int argc, char **argv )
 	}
 
 	str = getWord(argv[1]);
-	if (str.empty() && argv[1])
 
 	if ( argc > 2 || getWord(&argv[1][str.length()]).empty() == false ) {
 		cerr << "Warning: only converts the first argument" << endl;
