@@ -11,7 +11,7 @@ class Array {
 public:
 
 	/* Constructors/destructors */
-	Array<T>( ) : _n(1), _data(new T()) {
+	Array<T>( ) : _n(0), _data(new T()) {
 			std::cout << "Generic template<T> called w " << _data << std::endl;
 	}
 
@@ -41,6 +41,10 @@ public:
 	~Array<T>( ) { 
 		std::cout << "~Array called" << std::endl;
 		delete [] _data;
+		// if (_n)
+		// 	delete [] _data;
+		// else
+		// 	delete _data;
 	}
 
 
@@ -68,10 +72,13 @@ public:
 		return this->_data[n];
 	}
 
+	/* Member functions */
+
+	uint const & size( ) const { return this->_n; }
 
 	/* Operator overloads */
 	T const &operator[]( size_t n )			const	{ return this->getAt(n); }
-	T const &operator*( Array const & lhs )	const	{ return lhs.getData; }
+	T const &operator*( Array const & lhs )	const	{ return *(lhs._data); }
 
 private:
 	uint	_n;

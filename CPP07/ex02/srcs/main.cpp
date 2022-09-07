@@ -15,16 +15,15 @@ int	main( ) {
 
 	Array< int > 				a( 10 );
 	Array< int > 				a1;
-	int	*						a2 = new int();
 	Array< float > 				b( 10 );
 	Array< string > 			c( 10 );
 	Array< bool > 				d( 10 );
 	Array< Vertex< int > >		e( 10 );
-	
+
 
 	cout << "Array< int > 				a( 10 ) \n"	<< a << endl;
 	cout << "Array< int > 				a1 \n"		<< a1 << endl;
-	cout << "int 			a2 \n"		<< *a2 << endl;
+	cout << "*a1							\n"		<< *a1 << endl;
 	cout << "Array< float > 			b( 10 ) \n"	<< b << endl;
 	cout << "Array< string > 			c( 10 ) \n"	<< c << endl;
 	cout << "Array< bool > 				d( 10 ) \n"	<< d << endl;
@@ -34,7 +33,10 @@ int	main( ) {
 
 	cout << d << endl;
 
+
+
 	int i = 3;
+
 	Array< int > *				f = new Array< int >( 10, i );
 	cout << *f << endl;
 	Array< int > 				g = *f;
