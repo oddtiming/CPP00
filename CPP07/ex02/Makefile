@@ -1,4 +1,4 @@
-NAME	=	iter
+NAME	=	array
 
 CC		= clang++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I$(INCS)

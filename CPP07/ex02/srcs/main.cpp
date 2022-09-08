@@ -12,22 +12,29 @@ void	flipBool( bool & b ) {
 }
 
 int	main( ) {
+	bool					boolTrue = true;
+	Array< int > 			a( 10 );
+	Array< int > 			a1;
+	Array< float > 			b( 12 );
+	Array< string > 		c( 2 );
+	Array< bool > 			d( 9, boolTrue );
+	Array< Vertex< int > >	e( 8 );
 
-	Array< int > 				a( 10 );
-	Array< int > 				a1;
-	Array< float > 				b( 10 );
-	Array< string > 			c( 10 );
-	Array< bool > 				d( 10 );
-	Array< Vertex< int > >		e( 10 );
 
-
-	cout << "Array< int > 				a( 10 ) \n"	<< a << endl;
-	cout << "Array< int > 				a1 \n"		<< a1 << endl;
-	cout << "*a1							\n"		<< *a1 << endl;
-	cout << "Array< float > 			b( 10 ) \n"	<< b << endl;
-	cout << "Array< string > 			c( 10 ) \n"	<< c << endl;
-	cout << "Array< bool > 				d( 10 ) \n"	<< d << endl;
-	cout << "Array< Vertex< int > >		e( 10 ) \n"	<< e << endl;
+	cout << "Array< int > 			a( 10 ) \n"	<< a		<< endl;
+	cout << "Array< int > 			a( 10 ) \n"	<< a		<< endl;
+	cout << "a[5]						:"		<< a[5]		<< endl;
+	cout << "size: " 							<< a.size() << endl;
+	cout << "Array< int > 			a1 \n"		<< a1 		<< endl;
+	cout << "size: " 							<< a1.size()<< endl;
+	cout << "Array< float > 		b( 10 ) \n"	<< b 		<< endl;
+	cout << "size: " 							<< b.size() << endl;
+	cout << "Array< string > 		c( 10 ) \n"	<< c 		<< endl;
+	cout << "size: " 							<< c.size() << endl;
+	cout << "Array< bool > 			d( 10 ) \n"	<< d 		<< endl;
+	cout << "size: " 							<< d.size() << endl;
+	cout << "Array< Vertex< int > >	e( 10 ) \n"	<< e 		<< endl;
+	cout << "size: " 							<< e.size() << endl;
 
 	::iter( d.getData(), 10, flipBool);
 
@@ -63,5 +70,4 @@ int	main( ) {
 	
 
 	return 0;
-
 }

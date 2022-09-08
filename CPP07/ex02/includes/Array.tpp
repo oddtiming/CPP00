@@ -11,16 +11,16 @@ class Array {
 public:
 
 	/* Constructors/destructors */
-	Array<T>( ) : _n(0), _data(new T()) {
+	Array( ) : _n(0), _data(new T[_n]) {
 			std::cout << "Generic template<T> called w " << _data << std::endl;
 	}
 
-	Array<T>( uint n ) 
-		: _n(n), _data( new T[n] ) {
+	Array( uint n ) 
+		: _n(n), _data( new T[_n] ) {
 			std::cout << "Generic template<T> called w " << _n << std::endl;
 	}
 
-	Array<T>( uint n, T & val ) 
+	Array( uint n, T & val ) 
 		: _n(n) {
 			std::cout << "Generic template<T> called w " << _n << " and val: " << val << std::endl;
 
@@ -30,7 +30,7 @@ public:
 			}
 	}
 
-	Array<T>( Array & rhs ) : _n(rhs._n) {
+	Array( Array & rhs ) : _n(rhs._n) {
 			std::cout << "template<T> copy constructor called" << std::endl;
 			this->_data = new T[_n];
 			for (uint i = 0; i < _n ; i++) {
@@ -38,13 +38,9 @@ public:
 			}
 	}
 
-	~Array<T>( ) { 
+	~Array( ) { 
 		std::cout << "~Array called" << std::endl;
 		delete [] _data;
-		// if (_n)
-		// 	delete [] _data;
-		// else
-		// 	delete _data;
 	}
 
 
@@ -78,7 +74,7 @@ public:
 
 	/* Operator overloads */
 	T const &operator[]( size_t n )			const	{ return this->getAt(n); }
-	T const &operator*( Array const & lhs )	const	{ return *(lhs._data); }
+	// T const &operator*( Array const & lhs )	const	{ return *(lhs._data); }
 
 private:
 	uint	_n;
@@ -89,9 +85,12 @@ private:
 
 template< typename T >
 std::ostream &	operator<<( std::ostream & o, Array<T> const &p) {
+	// Set iomanip flags
 	o	<< std::boolalpha 
 		<< std::setiosflags( std::ios::fixed )
 		<< std::setprecision( 2 );
+	
+	// Print Array values
 	uint n = p.getN();
 	for ( uint i = 0; i < n; i++ ) {
 
