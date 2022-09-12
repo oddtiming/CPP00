@@ -10,57 +10,60 @@ class Array {
 
 public:
 
-	/* Constructors/destructors */
-	Array( ) : _n(0), _data(new T[_n]) {
-			std::cout << "Generic template<T> called w " << _data << std::endl;
+/* Constructors */
+	Array( ) : _n(0), _data(new T[0]) {
+			std::cout << "Array<T> default constructor called" << std::endl;
 	}
 
-	Array( uint n ) 
+	Array( size_t n ) 
 		: _n(n), _data( new T[_n] ) {
-			std::cout << "Generic template<T> called w " << _n << std::endl;
+			std::cout << "Array<T> parametric constructor called w size: " << _n << std::endl;
 	}
 
-	Array( uint n, T & val ) 
-		: _n(n) {
-			std::cout << "Generic template<T> called w " << _n << " and val: " << val << std::endl;
+	Array( size_t n, T & val ) 
+		: _n(n), _data( new T[_n] ) {
+			std::cout << "Array<T> parametric constructor w size: " << _n << " and val: " << val << std::endl;
 
-			_data = new T[n];
-			for (uint i = 0; i < _n ; i++) {
+			for (size_t i = 0; i < _n ; i++) {
 				_data[i] = val;
 			}
 	}
 
 	Array( Array & rhs ) : _n(rhs._n) {
-			std::cout << "template<T> copy constructor called" << std::endl;
+			std::cout << "Array<T> copy constructor called" << std::endl;
 			this->_data = new T[_n];
-			for (uint i = 0; i < _n ; i++) {
+			for (size_t i = 0; i < _n ; i++) {
 				_data[i] = rhs.getAt(i);
 			}
 	}
 
+/* Destructor */
 	~Array( ) { 
 		std::cout << "~Array called" << std::endl;
-		delete [] _data;
+		delete [] this->_data;
 	}
 
 
-	/* Copy assignment operator */
+/* Copy assignment operator */
 	Array const & operator=( Array const & rhs ) {
-		this->~Array();
-		std::cout << "template<T> copy assignment operator called" << std::endl;
+		std::cout << "Array<T> copy assignment operator called" << std::endl;
+
+		delete [] this->_data;
+		
+		this->_n = rhs._n;
 		this->_data = new T[_n];
-		for (uint i = 0; i < _n ; i++) {
+
+		for (size_t i = 0; i < _n ; i++) {
 			_data[i] = rhs.getAt(i);
 		}
 		return *this;
 	}
 
 
-	/* Getters/Setters */
-
+/* Getters/Setters */
 	T const *		getData( ) const { return this->_data; }
 	T *				getData( ) { return this->_data; }
-	uint const &	getN(  ) const { return this->_n; }
+	size_t const &	getN(  ) const { return this->_n; }
 	T const &		getAt( size_t n ) const { 
 		if (n >= this->_n) {
 			throw ArrayIndexOutOfBoundsException( n, this->_n );
@@ -68,16 +71,14 @@ public:
 		return this->_data[n];
 	}
 
-	/* Member functions */
+/* Member functions */
+	size_t const & size( ) const { return this->_n; }
 
-	uint const & size( ) const { return this->_n; }
-
-	/* Operator overloads */
+/* Operator overloads */
 	T const &operator[]( size_t n )			const	{ return this->getAt(n); }
-	// T const &operator*( Array const & lhs )	const	{ return *(lhs._data); }
 
 private:
-	uint	_n;
+	size_t	_n;
 	T *		_data;
 
 };
@@ -91,8 +92,8 @@ std::ostream &	operator<<( std::ostream & o, Array<T> const &p) {
 		<< std::setprecision( 2 );
 	
 	// Print Array values
-	uint n = p.getN();
-	for ( uint i = 0; i < n; i++ ) {
+	size_t n = p.getN();
+	for ( size_t i = 0; i < n; i++ ) {
 
 		o	<< "p[" << i << "]: "
 			<< p[i] << std::endl;

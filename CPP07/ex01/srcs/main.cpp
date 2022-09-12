@@ -8,7 +8,6 @@ using std::endl;
 using std::string;
 
 
-
 template< typename T >
 void	decrement( T & x ) {
 	x -= 1;

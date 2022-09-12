@@ -11,6 +11,7 @@ void	flipBool( bool & b ) {
 	b = !b;
 }
 
+
 int	main( ) {
 	bool					boolTrue = true;
 	Array< int > 			a( 10 );
@@ -21,7 +22,6 @@ int	main( ) {
 	Array< Vertex< int > >	e( 8 );
 
 
-	cout << "Array< int > 			a( 10 ) \n"	<< a		<< endl;
 	cout << "Array< int > 			a( 10 ) \n"	<< a		<< endl;
 	cout << "a[5]						:"		<< a[5]		<< endl;
 	cout << "size: " 							<< a.size() << endl;
