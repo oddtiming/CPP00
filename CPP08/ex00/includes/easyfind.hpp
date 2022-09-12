@@ -1,5 +1,5 @@
-#ifndef EASYFIND_HPP_
-# define EASYFIND_HPP_
+#ifndef CPP_08_00_EASYFIND_HPP_
+# define CPP_08_00_EASYFIND_HPP_
 
 # include <stdexcept>
 # include <string>
@@ -22,4 +22,4 @@ class EmptyContainerException : public std::exception {
 			return "EmptyContainerException"; }
 };
 
-#endif // EASYFIND_HPP_
+#endif // CPP_08_00_EASYFIND_HPP_

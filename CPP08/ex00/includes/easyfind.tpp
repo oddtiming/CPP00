@@ -1,5 +1,5 @@
-#ifndef EASYFIND_TPP_
-# define EASYFIND_TPP_
+#ifndef CPP_08_00_EASYFIND_TPP_
+# define CPP_08_00_EASYFIND_TPP_
 
 #include "easyfind.hpp"
 #include <algorithm>
@@ -15,6 +15,8 @@ void	easyfind( T & p, int n) {
 	std::cout << "Int "  << n << " was found at index " << index << std::endl;
 }
 
+
+
 // Little cheataroo for queues and stacks (Container Adaptors)
 template <typename T>
 class ContainerAdaptor : T {
@@ -28,6 +30,7 @@ public:
 
 
 // For queues and stacks
+// This was not required, but I added it out of curiosity
 template <template <class, class> class C, template <class, class> class Cont, class T >
 void	easyfind(Cont<int, C< int, std::allocator<T> > > & p, int n) {
 
@@ -40,4 +43,4 @@ void	easyfind(Cont<int, C< int, std::allocator<T> > > & p, int n) {
 	return ;
 }
 
-#endif // EASYFIND_TPP_
+#endif // CPP_08_00_EASYFIND_TPP_

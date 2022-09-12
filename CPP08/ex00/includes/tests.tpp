@@ -35,7 +35,7 @@ void	_test_easyfind(T & p) {
 	}	
 }
 
-//  for vector, list, deque
+// For vector, list, deque
 template < typename T >
 void	_generate_tests( T &					p, 
 						 typename T::iterator	it,
@@ -45,6 +45,12 @@ void	_generate_tests( T &					p,
 							 
 	_print_table_top();
 	_print_table_indices( width );
+
+	typename T::iterator		it1 = p.begin();
+	typename T::iterator		ite1 = p.end();
+
+	(void) it1;
+	(void) ite1;
 
 	for( ; it != ite; it++) {
 		*it = _random_gen() % RANGE ;
@@ -59,7 +65,7 @@ void	_generate_tests( T &					p,
 	
 
 
-// Only for queue... :(
+// For queues and stacks
 template <typename T>
 void	_generate_tests( T & p ) {
 	static uint const	width = nbDigits(RANGE) ;
