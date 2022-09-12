@@ -1,4 +1,5 @@
 #include "iter.hpp"
+#include "Fixed.hpp"
 #include <iostream>
 #include <cstring>
 #include <string>
@@ -31,6 +32,11 @@ void	strToLower(std::string & str) {
 
 void	flipBool( bool & b ) {
 	b = !b;
+}
+
+template <typename T>
+void	print( T const & i ) {
+	cout << i << endl;
 }
 
 
@@ -92,8 +98,6 @@ int main( void ) {
 	cout << b[1] << endl;
 	cout << b[2] << endl;
 
-
-
 	string	s[3] = {
 		"this is a lowercase string",
 		"THIS IS AN UPPERCASE STRING",
@@ -118,6 +122,13 @@ int main( void ) {
 	cout << s[0] << endl;
 	cout << s[1] << endl;
 	cout << s[2] << endl;
+
+
+
+	Fixed	* fix = new Fixed[3];
+	::iter( fix, 3, print );
+
+	delete [] fix;
 
 	return 0;
 }

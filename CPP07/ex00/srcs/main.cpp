@@ -5,7 +5,6 @@ using std::cout;
 using std::endl;
 using std::string;
 
-
 int main( void ) {
 	int a = 2;
 	int b = 3;
