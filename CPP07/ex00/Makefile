@@ -1,7 +1,7 @@
 NAME	=	templates
 
-CC		= clang++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I$(INCS)
+CC		= c++
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR)
 
 SHELL	=	bash
 
@@ -23,9 +23,6 @@ SRCS			= $(addprefix $(SRC_DIR)/, $(CFILES))
 
 OBJ_DIR			= ./obj
 OBJS			= $(addprefix $(OBJ_DIR)/, $(CFILES:.cpp=.o))
-
-CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR)
 
 RM_OBJS			=	rm -rf $(OBJ_DIR)
 RM_EXE			=	rm -f $(NAME)

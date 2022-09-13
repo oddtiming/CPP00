@@ -4,6 +4,9 @@
 #include "Vertex.tpp"
 #include <iostream>
 
+
+void	_print_header( std::string const & text );
+
 using std::cout;
 using std::endl;
 using std::string;
@@ -11,36 +14,50 @@ void	flipBool( bool & b ) {
 	b = !b;
 }
 
+template <typename T>
+void	print( T const & i ) {
+	cout << i << endl;
+}
 
 int	main( ) {
+
+	_print_header("Part 1 : General tests");
+	
 	bool					boolTrue = true;
-	Array< int > 			a( 10 );
+	string					str = "patate";
+	int						i1 = 42;
+	float					f1 = 42.0f;
+	Vertex<float>			v1( f1, f1, f1 );
+	Array< int > 			a( 10, i1 );
 	Array< int > 			a1;
-	Array< float > 			b( 12 );
-	Array< string > 		c( 2 );
+	Array< float > 			b( 12, f1 );
+	Array< string > 		c( 2, str );
 	Array< bool > 			d( 9, boolTrue );
-	Array< Vertex< int > >	e( 8 );
+	Array< Vertex<float> >	e( 8, v1 );
 
 
-	cout << "Array< int > 			a( 10 ) \n"	<< a		<< endl;
-	cout << "a[5]						:"		<< a[5]		<< endl;
-	cout << "size: " 							<< a.size() << endl;
-	cout << "Array< int > 			a1 \n"		<< a1 		<< endl;
-	cout << "size: " 							<< a1.size()<< endl;
-	cout << "Array< float > 		b( 10 ) \n"	<< b 		<< endl;
-	cout << "size: " 							<< b.size() << endl;
-	cout << "Array< string > 		c( 10 ) \n"	<< c 		<< endl;
-	cout << "size: " 							<< c.size() << endl;
-	cout << "Array< bool > 			d( 10 ) \n"	<< d 		<< endl;
-	cout << "size: " 							<< d.size() << endl;
-	cout << "Array< Vertex< int > >	e( 10 ) \n"	<< e 		<< endl;
-	cout << "size: " 							<< e.size() << endl;
+	cout << "Array< int > 			a( 10 ) \n"	<< a;
+	cout << "size: " 							<< a.size()	<< "\n" << endl;
+	cout << "a[5]				: "				<< a[5]		<< endl;
+	cout << "Array< int > 			a1 \n"		<< a1;
+	cout << "size: " 							<< a1.size()<< "\n" << endl;
+	cout << "Array< float > 		b( 10 ) \n"	<< b;
+	cout << "size: " 							<< b.size()	<< "\n" << endl;
+	cout << "Array< string > 		c( 10 ) \n"	<< c;
+	cout << "size: " 							<< c.size()	<< "\n" << endl;
+	cout << "Array< bool > 			d( 10 ) \n"	<< d;
+	cout << "size: " 							<< d.size()	<< "\n" << endl;
+	cout << "Array< Vertex< int > >	e( 10 ) \n";
+	::iter(e.getData(), e.size(), print);
+	cout << "size: " 							<< e.size()	<< "\n" << endl;
 
 	::iter( d.getData(), 10, flipBool);
 
 	cout << d << endl;
 
 
+
+	_print_header("Part 2 : copy tests");
 
 	int i = 3;
 
@@ -56,6 +73,11 @@ int	main( ) {
 	cout << g << endl;
 	cout << h << endl;
 
+
+
+	
+	_print_header("Part 3 : out of bounds exception");
+
 	try {
 		cout << g[11];
 	} catch (std::exception & e) {
@@ -70,4 +92,12 @@ int	main( ) {
 	
 
 	return 0;
+}
+
+void	_print_header( std::string const & text ) {
+	uint len = text.length();
+	
+	std::cout << "\n" << std::setw(len * 3 + 5) << std::setfill('*') << "\n";
+	std::cout << std::setw(len + 2) << std::setfill(' ') << "* " << text << " *" << "\n";
+	std::cout << std::setw(len * 3 + 5) << std::setfill('*') << "\n" << std::endl;
 }

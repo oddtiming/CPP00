@@ -14,7 +14,9 @@ public:
 	~Vertex<T>(  ) { }
 
 	Vertex const &operator=( Vertex const & rhs ) {
-		*this = this->Vertex(rhs);
+		this->_x = rhs._x;
+		this->_y = rhs._y;
+		this->_z = rhs._z;
 		return *this;
 	}
 	
@@ -30,9 +32,9 @@ public:
 	//...
 
 private:
-	T const		_x;
-	T const		_y;
-	T const		_z;
+	T		_x;
+	T		_y;
+	T		_z;
 
 };
 

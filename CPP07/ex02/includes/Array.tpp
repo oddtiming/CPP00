@@ -11,7 +11,8 @@ class Array {
 public:
 
 /* Constructors */
-	Array( ) : _n(0), _data(new T[0]) {
+	Array( )
+		: _n(0), _data(new T[0]) {
 			std::cout << "Array<T> default constructor called" << std::endl;
 	}
 
@@ -22,16 +23,16 @@ public:
 
 	Array( size_t n, T & val ) 
 		: _n(n), _data( new T[_n] ) {
-			std::cout << "Array<T> parametric constructor w size: " << _n << " and val: " << val << std::endl;
+			std::cout << "Array<T> parametric constructor called w size: " << _n << " and val: " << val << std::endl;
 
 			for (size_t i = 0; i < _n ; i++) {
 				_data[i] = val;
 			}
 	}
 
-	Array( Array & rhs ) : _n(rhs._n) {
+	Array( Array & rhs ) 
+		: _n(rhs._n), _data( new T[_n] ) {
 			std::cout << "Array<T> copy constructor called" << std::endl;
-			this->_data = new T[_n];
 			for (size_t i = 0; i < _n ; i++) {
 				_data[i] = rhs.getAt(i);
 			}
@@ -64,6 +65,13 @@ public:
 	T const *		getData( ) const { return this->_data; }
 	T *				getData( ) { return this->_data; }
 	size_t const &	getN(  ) const { return this->_n; }
+	
+	T &		getAt( size_t n ) { 
+		if (n >= this->_n) {
+			throw ArrayIndexOutOfBoundsException( n, this->_n );
+		}
+		return this->_data[n];
+	}
 	T const &		getAt( size_t n ) const { 
 		if (n >= this->_n) {
 			throw ArrayIndexOutOfBoundsException( n, this->_n );
@@ -75,7 +83,8 @@ public:
 	size_t const & size( ) const { return this->_n; }
 
 /* Operator overloads */
-	T const &operator[]( size_t n )			const	{ return this->getAt(n); }
+	T & operator[]( size_t n )				{ return this->getAt(n); }
+	T const & operator[]( size_t n ) const	{ return this->getAt(n); }
 
 private:
 	size_t	_n;
