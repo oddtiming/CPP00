@@ -8,9 +8,17 @@
 #define NB_VALS 10000
 
 uint	_random_gen( );
+void	_print_header( std::string const & text );
+
+void	_generate_tests( ) {
+
+}
+
 
 int	main( ) {
 	MutantStack<int> mstack;
+
+	_print_header("Part 1 : Comparison w std::list");
 
 	mstack.push(5);
 	mstack.push(17);
@@ -21,11 +29,6 @@ int	main( ) {
 	std::cout << "after mstack.pop() : ";
 	std::cout << " mstack.top() : " << mstack.top() << std::endl;
 	std::cout << " mstack.size() : " << mstack.size() << std::endl;
-	// mstack.push(3);
-	// mstack.push(5);
-	// mstack.push(737);
-
-
 
 	int temp;
 
@@ -49,8 +52,8 @@ int	main( ) {
 		++it;
 	}
 
+	_print_header("Part 2 : begin/end tests");
 
-	std::cout << "\n\n\t *** PART 2 *** \n" << std::endl;
 
 	// MutantStack<int> mstack2 = mstack;
 	MutantStack<int> mstack2;
@@ -95,3 +98,14 @@ uint	_random_gen( ) {
 	
 	return (rand());
 }
+
+void	_print_header( std::string const & text ) {
+	uint len = text.length();
+	
+	std::cout << "\n" << std::setw(len * 3 + 5) << std::setfill('*') << "\n";
+	std::cout << std::setw(len + 2) << std::setfill(' ') << "* " << text << " *" << "\n";
+	std::cout << std::setw(len * 3 + 5) << std::setfill('*') << "\n" << std::endl;
+}
+
+// template<typename T1, template T2>
+// void	_print_table( T * val1, T2 )
