@@ -8,9 +8,13 @@ RED			=	\033[0;31m
 UYELLOW		=	\033[4;33m
 RESET_COL	=	\033[0m
 
-CFILES	=	main.cpp
+CFILES	=	main.cpp \
+			tests.cpp \
+			type.cpp \
+			utils.cpp
 
-INCFILES	=	MutantStack.tpp
+INCFILES	=	MutantStack.tpp \
+				tests.tpp
 
 INC_DIR			= ./includes
 INCS			= $(addprefix $(INC_DIR)/, $(INCFILES))

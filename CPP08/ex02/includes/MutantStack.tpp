@@ -17,7 +17,7 @@ public:
 		std::stack<T, Container>( s ) {  }
 	MutantStack( MutantStack const & src ) :
 		std::stack<T, Container>( src.c ) { }
-	~MutantStack( ) { }
+	~MutantStack( ) { std::cout << "~MutantStack" << std::endl; }
 
 	/* Assignment operators */
 	MutantStack &	operator=( MutantStack const & rhs ) { 

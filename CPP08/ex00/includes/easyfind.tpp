@@ -21,11 +21,11 @@ void	easyfind( T & p, int n) {
 template <typename T>
 class ContainerAdaptor : T {
 public:
-	ContainerAdaptor(T & q) : T(q) { } ;
+	ContainerAdaptor(T & q) : T(q) { }
 
 	// returns a ref to subclass, but since `c' is protected,
 	// we have to access it through a child class
-	std::deque< int > &	get_subclass( ) { return this->c; } ;
+	std::deque< int > &	get_subclass( ) { return this->c; }
 };
 
 
