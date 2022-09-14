@@ -18,6 +18,16 @@ std::string demangle(const char* name) {
 
     handle result( abi::__cxa_demangle(name, NULL, NULL, &status) );
 
+    std::string trim(result.p);    
+    std::string toErase("std::__1::");    
+
+    size_t pos = trim.find(toErase);;
+    // Search for the substring in string
+    // size_t pos = trim.find(toErase);
+    while (pos != std::string::npos) {
+        trim.erase(pos, toErase.length());
+        pos = trim.find(toErase);
+    }
     return (status==0) ? result.p : name ;
 }
 

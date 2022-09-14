@@ -12,11 +12,12 @@ uint		_random_gen( );
 void		_print_table_border( size_t len, char c );
 void		_print_table_footer( size_t len);
 std::string demangle(const char* name);
+std::string	trim_namespaces(std::string const & str);
 
 template<typename T, typename Container>
 void	_print_tables( MutantStack<T> & arr1, Container & arr2 ) {
 
-    size_t len = 15;
+    size_t len = 27;
 	typename MutantStack<T>::iterator it1 = arr1.begin();
 	typename MutantStack<T>::iterator it1e = arr1.end();
 	typename Container::iterator it2 = arr2.begin();
@@ -25,7 +26,7 @@ void	_print_tables( MutantStack<T> & arr1, Container & arr2 ) {
 
 	_print_table_border(len * 2 + 3, '_');
 	std::cout << "|" << std::setw(len) << std::setfill(' ') << "Mutant Stack";
-	std::cout << "|" << std::setw(len) << demangle(typeid(Container).name());
+	std::cout << "|" << std::setw(len) << trim_namespaces( demangle( typeid(Container).name() ) );
 	std::cout << "|" << std::endl;
 	_print_table_border(len * 2 + 3, '-');
 

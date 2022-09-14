@@ -1,5 +1,6 @@
 #include <iostream> // cout, endl
 #include <iomanip>  // setw, setfill
+#include <string>  // setw, setfill
 
 
 void _print_table_border( size_t len, char c ) {
@@ -22,6 +23,22 @@ void	_print_header( std::string const & text ) {
 	std::cout << std::setw(len + 2) << std::setfill(' ') << std::right << "* " << text << " *" << "\n";
 	std::cout << std::setw(len * 3 + 5) << std::setfill('*') << "*" << std::endl;
 }
+
+std::string		trim_namespaces(std::string const & str) {
+
+	std::string	trim(str);
+    std::string	toErase("std::__1::");
+	size_t		pos = trim.find(toErase);
+
+    while (pos != std::string::npos) {
+        trim = trim.erase(pos, toErase.length());
+        pos = trim.find(toErase);
+    }
+
+	return trim;
+
+}
+
 
 #include <iostream>	// cout, endl
 #include <cstdlib>	// rand(), srand()

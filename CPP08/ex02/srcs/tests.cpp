@@ -44,7 +44,6 @@ void    test_copies() {
 	{
         int              tmp;
 		MutantStack<int> mstack;
-		mstack2 = mstack;
 
 		for (int i = 0; i < 10; i++ ) {
 			tmp = _random_gen() % 1000;
