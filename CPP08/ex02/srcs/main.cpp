@@ -7,8 +7,6 @@
 #include "MutantStack.tpp"
 #include "tests.tpp"
 
-#define NB_VALS 10000
-
 void    test_lists();
 void    test_deques();
 void    test_vectors();

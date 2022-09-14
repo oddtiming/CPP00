@@ -7,8 +7,10 @@
 #include <typeinfo>
 #include "MutantStack.tpp"
 
-void _print_table_border( size_t len, char c );
-void _print_table_footer( size_t len);
+#define NB_VALS 10
+uint		_random_gen( );
+void		_print_table_border( size_t len, char c );
+void		_print_table_footer( size_t len);
 std::string demangle(const char* name);
 
 template<typename T, typename Container>
@@ -46,6 +48,19 @@ void	_print_tables( MutantStack<T> & arr1, Container & arr2 ) {
 
 	_print_table_footer(len * 2 + 3);
 	return ;
+}
+
+template<typename T, typename Container>
+void	_fill_data( MutantStack<T> & mstack, Container & cont ) {
+	int	tmp;
+	
+	for (int i = 0; i < NB_VALS; i++ ) {
+		tmp = _random_gen() % 1000;
+		std::cout << "inserting: " << tmp << std::endl;
+		mstack.push( tmp );
+		cont.push_back( tmp );
+	}
+	
 }
 
 #endif // CPP_08_02_TESTS_TPP_
