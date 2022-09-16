@@ -25,7 +25,7 @@ void	_print_tables( MutantStack<T> & arr1, Container & arr2 ) {
     	
 
 	_print_table_border(len * 2 + 3, '_');
-	std::cout << "|" << std::setw(len) << std::setfill(' ') << "Mutant Stack";
+	std::cout << "|" << std::setw(len) << std::setfill(' ') << "Mutant Stack< int >";
 	std::cout << "|" << std::setw(len) << trim_namespaces( demangle( typeid(Container).name() ) );
 	std::cout << "|" << std::endl;
 	_print_table_border(len * 2 + 3, '-');
