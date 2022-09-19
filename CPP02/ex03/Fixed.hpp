@@ -39,9 +39,9 @@ public:
 
 	/* Incrementers/decrementers */
 	Fixed &	operator ++ ( );				// Prefix
-	Fixed 	operator ++ ( int );				// Postfix
+	Fixed 	operator ++ ( int );			// Postfix
 	Fixed &	operator -- ( );				// Note that prefix returns reference
-	Fixed 	operator -- ( int );				// while postfix returns value.
+	Fixed 	operator -- ( int );			// while postfix returns value.
 	// a-- ==> a is decremented by 1, but previous value is returned. 
 	// Hence the new instance.
 	
