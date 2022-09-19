@@ -3,14 +3,14 @@
 Point::Point( ) : _x(0), _y(0) { return ; }
 Point::Point( int const x, int const y ) : _x(x), _y(y) { return ; }
 Point::Point( Fixed const x, Fixed const y ) : _x(x), _y(y) { return ; }
-Point::Point( Point const & src ) {	*this = src; }
+Point::Point( Point const & src ) : _x(src._x), _y(src._y) { return ; }
 
 Point::~Point( ) { return ; }
 
 Point	Point::operator=( Point const & rhs ) {
-	
-	
-	return Point( rhs.getX(), rhs.getY() );
+	(void) rhs;
+
+	return *this;
 }
 
 Point	Point::operator-( Point const & rhs ) { 
