@@ -36,8 +36,8 @@ public:
 	iterator end() { return this->c.end(); }
 
     // expose const iterators of the underlying container
-	iterator begin() const { return this->c.begin(); }
-	iterator end() const { return this->c.end(); }
+	const iterator begin() const { return this->c.begin(); }
+	const iterator end() const { return this->c.end(); }
 
 };
 
