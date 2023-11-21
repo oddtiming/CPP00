@@ -9,9 +9,10 @@ UYELLOW		=	\033[4;33m
 RESET_COL	=	\033[0m
 
 CFILES	=	main.cpp \
+			parse.cpp
 			
 
-INCFILES	=	
+INCFILES	=	bitcoin.hpp
 
 INC_DIR			= ./includes
 INCS			= $(addprefix $(INC_DIR)/, $(INCFILES))
@@ -23,7 +24,7 @@ OBJ_DIR			= ./obj
 OBJS			= $(addprefix $(OBJ_DIR)/, $(CFILES:.cpp=.o))
 
 CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR)
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I$(INC_DIR) -g
 
 RM_OBJS			=	rm -rf $(OBJ_DIR)
 RM_EXE			=	rm -f $(NAME)
