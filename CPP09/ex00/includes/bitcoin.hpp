@@ -1,3 +1,5 @@
+#pragma once
+
 #include <algorithm> // replace
 #include <ctime>
 #include <fstream> // ifstream
@@ -6,6 +8,7 @@
 #include <map>
 #include <sstream> // ostringstream
 #include <string>  // string
+#include <climits> // INT_MAX
 
 using std::map;
 using std::string;
@@ -24,7 +27,13 @@ typedef u_int32_t uint;
 
 // parse.cpp
 map<uint, float> parseDatabase();
-
-// Dunno yet .cpp
 string getInputFileAsString(string filename);
+
+// main.cpp, to be removed
 time_t strToUnixTime(string dateStr);
+
+// utils.cpp
+float ft_stof(string s);
+
+template<typename T>
+std::string ft_to_string(const T & value);
