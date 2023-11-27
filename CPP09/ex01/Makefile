@@ -63,6 +63,6 @@ fclean:	clean
 re:	fclean all
 
 run: all
-	@./$(NAME) input.txt
+	@./$(NAME) "5 1 2 + 4 * + 3 -"
 
 .PHONY: all clean fclean re pretty_print run

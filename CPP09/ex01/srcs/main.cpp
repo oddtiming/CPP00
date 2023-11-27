@@ -14,55 +14,11 @@ using std::stack;
 using std::string;
 using std::vector;
 
-string&
-str_remove_all(string& str, const string& pattern) {
-    string::size_type i = str.find(pattern, 0);
-    string::size_type pattern_length = pattern.length();
-
-    while (i != string::npos) {
-        str.erase(i, pattern_length);
-        i = str.find(pattern, i);
-    }
-    return str;
-}
-
 void
 str_remove_all(string& str, char c) {
     // std::remove() moves all the elements that are to be kept to the front of
     // the container, and returns an iterator to this new logical end.
     str.erase(std::remove(str.begin(), str.end(), c), str.end());
-}
-
-template <typename T>
-vector<T>
-reverse_stack(stack<T>& stk) {
-    vector<T> reversed;
-    reversed.reserve(stk.size());
-
-    while (!stk.empty()) {
-        reversed.push_back(stk.top());
-        stk.pop();
-    }
-    return reversed;
-}
-
-template <typename T>
-void
-print_stack_rev(stack<T> stk) {
-    if (stk.empty()) return;
-
-    // Convert to a vector to hold the reversed stack
-    vector<T> reversed = reverse_stack(stk);
-    typename vector<T>::iterator it = reversed.begin();
-    typename vector<T>::iterator ite = reversed.end();
-
-    cout << "[";
-    // Print first of array without preceding by separator
-    cout << *(it++);
-    while (it != ite) {
-        cout << ", " << *it++;
-    }
-    cout << "]" << endl;
 }
 
 template <typename T>
@@ -191,12 +147,14 @@ main(int argc, char* argv[]) {
 
     try {
         string post = parsePostFixNotation(argv[1]);
+        
         float res = postfixEval(post);
+        
         cout << "The final result is: " << res << endl;
+
+        return EXIT_SUCCESS;
     } catch (runtime_error& e) {
         cerr << e.what() << endl;
         return EXIT_FAILURE;
     }
-
-    return EXIT_SUCCESS;
 }
