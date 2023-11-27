@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  app:
+    image: cpp-build-env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./CPP09/ex01:/usr/src/app
+    working_dir: /usr/src/app
+    command: /bin/sh -c "ls srcs/*.cpp includes/* | entr -r -n make run"
